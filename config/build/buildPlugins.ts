@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildOptions } from './types/types';
+import ESLintPlugin from 'eslint-webpack-plugin';
 
 export function buildPlugins({
   mode,
@@ -18,7 +19,7 @@ export function buildPlugins({
   ];
 
   if (isDev) {
-    plugins.push(new webpack.ProgressPlugin());
+    plugins.push(new webpack.ProgressPlugin(), new ESLintPlugin());
   }
 
   if (!isDev) {

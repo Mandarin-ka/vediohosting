@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react", "simple-import-sort"],
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react", "^@?\\w", "(react-dom)(/.*)"],
+          ["^firebase"],
+          [
+            "(@|@components@UI|@pages|@utils|@projectTypes|@hooks|@routes|@store|@context|)(/.*|$)"
+          ],
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ],
+
+    "simple-import-sort/exports": "error",
+    "react/react-in-jsx-scope": "off"
+  }
+}

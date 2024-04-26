@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import * as styles from './App.module.scss';
+
 import Page from '@pages/Page';
 import Page3 from '@utils/Page3';
+
+import * as styles from './App.module.scss';
 
 function App() {
   return (
