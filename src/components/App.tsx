@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Page from '@pages/Page';
-import Page3 from '@utils/Page3';
 
 import * as styles from './App.module.scss';
 import { getIMDbMovies } from '@/API/getIMDbMovies';
+import { getKinoPoiskMovies } from '@/API/getKinoPoiskMovies';
 
 function App() {
   const [movies, setMovies] = useState<any>();
 
   useEffect(() => {
-    getIMDbMovies().then(async (data) =>
-      setMovies(JSON.parse(await data.text()))
-    );
+    getKinoPoiskMovies().then(async (response) => {
+      const data = JSON.parse(await response.text());
+      console.log(data);
+      setMovies(data);
+    });
   }, []);
 
   console.log(movies);
@@ -23,7 +25,6 @@ function App() {
       vivivi
       <div className={styles.temp}>element</div>
       <Page />
-      <Page3 />
       <Outlet />
     </div>
   );
