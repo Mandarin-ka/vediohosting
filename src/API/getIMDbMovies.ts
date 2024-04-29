@@ -11,8 +11,7 @@ export const getIMDbMovies = async () => {
 
   try {
     const response = await fetch(url, options);
-    const result = await response;
-    return result;
+    return response;
   } catch (error: unknown) {
     console.error((error as Error).message);
   }

@@ -1,0 +1,35 @@
+.card {
+  width: 300px;
+  box-sizing: border-box;
+}
+
+.poster {
+  max-width: 100%;
+}
+
+.info__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.thumbnail {
+  width: 36px;
+  max-width: 100%;
+  border-radius: 15%;
+}
+
+.info {
+  margin-left: 12px;
+}
+
+.title {
+  width: fit-content;
+}
+
+.director {
+  width: fit-content;
+}
+
+.year {
+  width: fit-contentя;
+}
