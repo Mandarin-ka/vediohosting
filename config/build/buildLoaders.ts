@@ -24,6 +24,12 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         { loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader },
         cssLoadersWithModules,
         'sass-loader',
+        {
+          loader: 'sass-resources-loader',
+          options: {
+            resources: './src/styles/vars.scss',
+          },
+        },
       ],
     },
     {
