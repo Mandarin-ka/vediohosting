@@ -44,15 +44,14 @@
 .year {
   margin-left: 30px;
   position: relative;
-}
-
-.year::before {
-  content: '';
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: $black;
-  top: calc(50% - 2.5px);
-  left: calc((-5px - 30px) / 2);
+  &::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $black;
+    top: calc(50% - 2.5px);
+    left: calc((-5px - 30px) / 2);
+  }
 }
