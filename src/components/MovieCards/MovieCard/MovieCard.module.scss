@@ -9,7 +9,8 @@
 
 .info__wrapper {
   display: flex;
-  align-items: center;
+  margin-top: 20px;
+  align-items: flex-start;
 }
 
 .thumbnail {
@@ -18,12 +19,22 @@
   border-radius: 15%;
 }
 
+.bottom__info {
+  display: flex;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
 .info {
   margin-left: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   width: fit-content;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .director {
@@ -31,5 +42,17 @@
 }
 
 .year {
-  width: fit-contentя;
+  margin-left: 30px;
+  position: relative;
+}
+
+.year::before {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $black;
+  top: calc(50% - 2.5px);
+  left: calc((-5px - 30px) / 2);
 }
