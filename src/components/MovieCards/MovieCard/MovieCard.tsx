@@ -1,9 +1,10 @@
 import { Movie } from '@/types/movies';
 import * as styles from './MovieCard.module.scss';
 import { getDirectors } from '@/utils/cards/getDirector';
+import Skeleton from '@/ui/skeleton/Skeleton';
 
 function MovieCard({ movie }: { movie: Movie }) {
-  return (
+  return movie ? (
     <div>
       <div className={styles.card}>
         <img src={movie.poster.url} alt='' className={styles.poster} />
@@ -25,6 +26,8 @@ function MovieCard({ movie }: { movie: Movie }) {
         </div>
       </div>
     </div>
+  ) : (
+    <Skeleton />
   );
 }
 

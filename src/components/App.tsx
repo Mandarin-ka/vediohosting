@@ -11,7 +11,7 @@ import ErrorBoundary from './ErrorBoundaries/ErrorBoundaries';
 import Skeleton from '@/ui/skeleton/Skeleton';
 
 function App() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[] | null[]>(Array(16).fill(null));
 
   useEffect(() => {
     // getKinoPoiskMovies().then((response: AxiosResponse) => {
@@ -26,8 +26,7 @@ function App() {
   return (
     <ErrorBoundary>
       <div className='App'>
-        {/* {!!movies.length && <MovieCards movies={movies} />} */}
-        <Skeleton />
+        <MovieCards movies={movies} />
       </div>
     </ErrorBoundary>
   );
