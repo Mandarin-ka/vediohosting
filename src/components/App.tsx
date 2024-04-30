@@ -7,6 +7,7 @@ import { kinopoiskData } from '@/fakeData/kinopoiskMovies'; //TODO: Fake
 import { Movie } from '@/types/movies';
 import { AxiosResponse } from '@/types/axiosResponse';
 import MovieCards from './MovieCards/MovieCards';
+import ErrorBoundary from './ErrorBoundaries/ErrorBoundaries';
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>();
@@ -18,7 +19,11 @@ function App() {
     setMovies(kinopoiskData.docs); //TODO: Fake
   }, []);
 
-  return <div className='App'>{movies && <MovieCards movies={movies} />}</div>;
+  return (
+    <ErrorBoundary>
+      <div className='App'>{movies && <MovieCards movies={movies} />}</div>
+    </ErrorBoundary>
+  );
 }
 
 export default App;
