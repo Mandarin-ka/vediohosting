@@ -21,8 +21,9 @@
 
 .bottom__info {
   display: flex;
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 5px;
+  align-items: center;
 }
 
 .info {
@@ -33,7 +34,7 @@
 
 .title {
   width: fit-content;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 

@@ -35,7 +35,6 @@
 
     "simple-import-sort/exports": "error",
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": ["warn", "always"],
-    "no-unused-expressions": ["warn", "always"]
+    "@typescript-eslint/no-unused-vars": "warn"
   }
 }

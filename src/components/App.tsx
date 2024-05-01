@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 
+import ErrorBoundary from './ErrorBoundaries/ErrorBoundaries';
+import MovieCards from './MovieCards/MovieCards';
+// import { getKinoPoiskMovies } from '@/API/getKinoPoiskMovies';
+import { kinopoiskData } from '@/fakeData/kinopoiskMovies'; //TODO: Fake
+// import { AxiosResponse } from '@/types/axiosResponse';
+import { Movie } from '@/types/movies';
+import Button from '@/ui/Button/Button';
+
 import '@/styles/reset.scss';
 import '@/styles/vars.scss';
-import { getKinoPoiskMovies } from '@/API/getKinoPoiskMovies';
-import { kinopoiskData } from '@/fakeData/kinopoiskMovies'; //TODO: Fake
-import { Movie } from '@/types/movies';
-import { AxiosResponse } from '@/types/axiosResponse';
-import MovieCards from './MovieCards/MovieCards';
-import ErrorBoundary from './ErrorBoundaries/ErrorBoundaries';
-import Skeleton from '@/ui/skeleton/Skeleton';
 
 function App() {
   const [movies, setMovies] = useState<Movie[] | null[]>(Array(16).fill(null));
@@ -19,7 +20,7 @@ function App() {
     // });
     setTimeout(
       () => setMovies(kinopoiskData.docs), //TODO: Fake
-      2000
+      1000
     );
   }, []);
 
@@ -27,6 +28,7 @@ function App() {
     <ErrorBoundary>
       <div className='App'>
         <MovieCards movies={movies} />
+        <Button text='Load More' onClick={() => console.log('click')} />
       </div>
     </ErrorBoundary>
   );

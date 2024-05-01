@@ -1,7 +1,8 @@
 import { Movie } from '@/types/movies';
-import * as styles from './MovieCard.module.scss';
+import Skeleton from '@/ui/Skeleton/Skeleton';
 import { getDirectors } from '@/utils/cards/getDirector';
-import Skeleton from '@/ui/skeleton/Skeleton';
+
+import * as styles from './MovieCard.module.scss';
 
 function MovieCard({ movie }: { movie: Movie }) {
   return movie ? (

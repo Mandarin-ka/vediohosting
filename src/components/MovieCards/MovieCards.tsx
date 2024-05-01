@@ -1,5 +1,6 @@
-import { Movie } from '@/types/movies';
 import MovieCard from './MovieCard/MovieCard';
+import { Movie } from '@/types/movies';
+
 import * as styles from './MovieCards.module.scss';
 
 function MovieCards({ movies }: { movies: Movie[] }) {

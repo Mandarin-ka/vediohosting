@@ -1,5 +1,6 @@
-import { AxiosResponse } from '@/types/axiosResponse';
 import axios from 'axios';
+
+import { AxiosResponse } from '@/types/axiosResponse';
 
 export const getKinoPoiskMovies = async (): Promise<AxiosResponse> => {
   try {
