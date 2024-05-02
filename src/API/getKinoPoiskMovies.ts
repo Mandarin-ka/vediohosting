@@ -2,12 +2,15 @@ import axios from 'axios';
 
 import { AxiosResponse } from '@/types/axiosResponse';
 
-export const getKinoPoiskMovies = async (): Promise<AxiosResponse> => {
+export const getKinoPoiskMovies = async (
+  page?: number
+): Promise<AxiosResponse> => {
   try {
     const url = 'https://api.kinopoisk.dev/v1.4/movie';
     const params = {
       selectFields: ['id', 'names', 'year', 'persons', 'poster'],
       limit: 16,
+      page: page || 0,
     };
 
     const response: AxiosResponse = await axios.get(url, {

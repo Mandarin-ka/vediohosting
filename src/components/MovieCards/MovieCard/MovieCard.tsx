@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { Movie } from '@/types/movies';
 import Skeleton from '@/ui/Skeleton/Skeleton';
 import { getDirectors } from '@/utils/cards/getDirector';
@@ -32,4 +34,4 @@ function MovieCard({ movie }: { movie: Movie }) {
   );
 }
 
-export default MovieCard;
+export default memo(MovieCard);
