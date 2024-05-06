@@ -1,0 +1,42 @@
+.toggler__wrapper {
+  width: 55px;
+  height: 30px;
+  border: 2px solid $buttons-color;
+  border-radius: 20px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.toggler__bar {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background-color: $black;
+  border-radius: 20px;
+  left: -100%;
+  transition: 0.15s;
+
+  &.active {
+    left: 0;
+  }
+}
+
+.toggler {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid $buttons-color;
+  box-sizing: border-box;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-color: $white;
+  transition: 0.15s;
+
+  &.active {
+    left: 24px;
+    background-color: $buttons-color;
+  }
+}

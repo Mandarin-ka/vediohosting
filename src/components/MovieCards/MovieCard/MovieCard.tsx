@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Movie } from '@/types/movies';
 import Skeleton from '@/ui/Skeleton/Skeleton';
-import { getDirectors } from '@/utils/cards/getDirector';
+import { getOneDirector } from '@/utils/cards/getDirector';
 
 import * as styles from './MovieCard.module.scss';
 
@@ -10,10 +10,10 @@ function MovieCard({ movie }: { movie: Movie }) {
   return movie ? (
     <div>
       <div className={styles.card}>
-        <img src={movie.poster.url || ''} alt='' className={styles.poster} />
+        <img src={movie.poster?.url || ''} alt='' className={styles.poster} />
         <div className={styles.info__wrapper}>
           <img
-            src={getDirectors(movie)[0]?.photo || ''}
+            src={getOneDirector(movie)?.photo || ''}
             alt=''
             className={styles.thumbnail}
           />
@@ -21,7 +21,7 @@ function MovieCard({ movie }: { movie: Movie }) {
             <h2 className={styles.title}>{movie.name || '...'}</h2>
             <div className={styles.bottom__info}>
               <h3 className={styles.director}>
-                {getDirectors(movie)[0]?.name || 'Неизвестно'}
+                {getOneDirector(movie)?.name || 'Неизвестно'}
               </h3>
               <span className={styles.year}>{movie.year || '...'}</span>
             </div>

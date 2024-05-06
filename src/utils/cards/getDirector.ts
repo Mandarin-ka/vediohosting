@@ -1,9 +1,9 @@
 import { Movie } from '@/types/movies';
 
-export const getDirectors = (movie: Movie) => {
-  return movie.persons.filter(
+export const getOneDirector = (movie: Movie) => {
+  return movie.persons.find(
     (e) =>
       e.enProfession.toLowerCase() === 'director' ||
-      e.profession.toLowerCase() === 'режиссеры'
+      e.enProfession.toLowerCase() === 'режиссеры'
   );
 };

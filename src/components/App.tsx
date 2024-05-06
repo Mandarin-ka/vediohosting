@@ -11,6 +11,7 @@ import Button from '@/ui/Buttons/PaginationButton/PaginationButton';
 
 import '@/styles/reset.scss';
 import '@/styles/vars.scss';
+import Header from './Header/Header';
 
 function App() {
   const [page, setPage] = useState<number>(1);
@@ -54,6 +55,7 @@ function App() {
   return (
     <ErrorBoundary>
       <div className='App'>
+        <Header />
         <ControlPanel genre={genre} setGenre={setGenre} />
         <MovieCards movies={movies} />
         <Button text='Load More' onClick={loadNewPage} />
