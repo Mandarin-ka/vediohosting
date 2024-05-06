@@ -8,17 +8,17 @@ export interface ResponseKiniopoisk {
 
 export interface Movie {
   id: number;
-  names: Names[];
+  name: string;
   year: number;
   poster: Poster;
   persons: Persons[];
 }
 
-interface Names {
-  name: string;
-  language?: string;
-  type?: string;
-}
+// interface Names {
+//   name: string;
+//   language?: string;
+//   type?: string;
+// }
 
 interface Poster {
   url: string;

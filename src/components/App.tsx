@@ -1,41 +1,60 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
+import ControlPanel from './ControlPanel/ControlPanel';
 import ErrorBoundary from './ErrorBoundaries/ErrorBoundaries';
 import MovieCards from './MovieCards/MovieCards';
-import { getKinoPoiskMovies } from '@/API/getKinoPoiskMovies';
+import { getKinopoiskMovies } from '@/API/kinopoisk/getKinopoiskMovies';
 // import { kinopoiskData } from '@/fakeData/kinopoiskMovies'; //TODO: Fake
-import { AxiosResponse } from '@/types/axiosResponse';
+import { AxiosResponseMovies } from '@/types/axiosResponse';
 import { Movie } from '@/types/movies';
-import Button from '@/ui/Button/Button';
+import Button from '@/ui/Buttons/PaginationButton/PaginationButton';
 
 import '@/styles/reset.scss';
 import '@/styles/vars.scss';
 
 function App() {
   const [page, setPage] = useState<number>(1);
-  const [movies, setMovies] = useState<Movie[] | null[]>(Array(16).fill(null));
+  const [genre, setGenre] = useState<string>('');
+  const [movies, setMovies] = useState<Movie[] | null[]>([]);
+  const [isLoadingNewPage, setIsLoadingNewPage] = useState<boolean>(false);
 
   useEffect(() => {
-    getKinoPoiskMovies(page).then((response: AxiosResponse) => {
-      if (movies[1]) {
-        setMovies((prevValue) => [...prevValue, ...response.data.docs]);
-      } else {
-        setMovies(response.data.docs);
-      }
-    });
+    // setMovies([...movies, ...Array(16).fill(null)]);
+    // getKinopoiskMovies(page, genre).then((response: AxiosResponseMovies) => {
+    //   if (movies[0]) {
+    //     setMovies([...movies, ...response.data.docs]);
+    //   }
+    // });
     // setTimeout(
     //   () => setMovies(kinopoiskData.docs), //TODO: Fake
     //   1000
     // );
-  }, [page]);
+    if (isLoadingNewPage) {
+      setMovies([...movies, ...Array(16).fill(null)]);
+      getKinopoiskMovies(page, genre).then((response: AxiosResponseMovies) => {
+        if (isLoadingNewPage) {
+          setMovies([...movies, ...Array(16).fill(null)]);
+          setMovies([...movies, ...response.data.docs]);
+        }
+      });
+    } else {
+      setMovies(Array(16).fill(null));
+      getKinopoiskMovies(page, genre).then((response: AxiosResponseMovies) => {
+        setMovies(response.data.docs);
+        setIsLoadingNewPage(false);
+      });
+    }
+  }, [page, genre]);
 
-  const loadNewPage = () => {
+  const loadNewPage = useCallback(() => {
+    setIsLoadingNewPage(true);
     setPage((prevValue) => prevValue + 1);
-  };
+  }, []);
 
   return (
     <ErrorBoundary>
       <div className='App'>
+        <ControlPanel genre={genre} setGenre={setGenre} />
         <MovieCards movies={movies} />
         <Button text='Load More' onClick={loadNewPage} />
       </div>

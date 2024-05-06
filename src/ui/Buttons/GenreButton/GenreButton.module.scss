@@ -1,0 +1,19 @@
+.button {
+  padding: 7px 25px;
+  border-radius: 15px;
+  background-color: $control-button-color;
+  border: 1px solid $control-border-color;
+  margin: 5px 10px;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover,
+  &.active {
+    background-color: $black;
+    color: white;
+  }
+
+  &.active {
+    pointer-events: none;
+  }
+}
