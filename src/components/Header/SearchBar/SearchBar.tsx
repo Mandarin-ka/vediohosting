@@ -1,9 +1,10 @@
 import { useState } from 'react';
+
 import * as styles from './SearchBar.module.scss';
 
 interface SearchBarProps {
   placeholder?: string;
-  defaultClickAction: () => void;
+  setQuery: (q: string) => void;
 }
 
 function SearchBar(props: SearchBarProps) {
@@ -14,7 +15,7 @@ function SearchBar(props: SearchBarProps) {
   };
 
   const onClick = () => {
-    props.defaultClickAction();
+    props.setQuery(value);
   };
 
   return (

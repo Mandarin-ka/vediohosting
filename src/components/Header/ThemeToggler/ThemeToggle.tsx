@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import * as styles from './ThemeToggler.module.scss';
 
 function ThemeToggler() {

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 import * as styles from './GenreButton.module.scss';
 
 function GenreButton({

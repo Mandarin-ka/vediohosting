@@ -25,12 +25,12 @@ function MovieCard({ movie }: { movie: Movie }) {
             className={styles.thumbnail}
           />
           <div className={styles.info}>
-            <h2 className={styles.title}>{movie.names[0]?.name}</h2>
+            <h2 className={styles.title}>
+              {movie?.names[0]?.name || movie.name}
+            </h2>
             <div className={styles.bottom__info}>
-              <h3 className={styles.director}>
-                {getOneDirector(movie)?.name || 'Неизвестно'}
-              </h3>
-              <span className={styles.year}>{movie.year || '...'}</span>
+              <h3 className={styles.director}>{getOneDirector(movie)?.name}</h3>
+              <span className={styles.year}>{movie.year}</span>
             </div>
           </div>
         </div>

@@ -1,8 +1,9 @@
 import SearchBar from './SearchBar/SearchBar';
 import ThemeToggler from './ThemeToggler/ThemeToggle';
+
 import * as styles from './Header.module.scss';
 
-function Header() {
+function Header({ setQuery }: { setQuery: (query: string) => void }) {
   return (
     <header className={styles.header}>
       <div className={styles.logo__wrapper}>
@@ -11,11 +12,7 @@ function Header() {
         </div>
         <h1 className={styles.title}>ModsenFilms</h1>
       </div>
-      <SearchBar
-        defaultClickAction={() => {
-          console.log('click');
-        }}
-      />
+      <SearchBar setQuery={setQuery} />
       <ThemeToggler />
     </header>
   );

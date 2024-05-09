@@ -12,6 +12,7 @@ export interface Movie {
   year: number;
   poster: Poster;
   persons: Persons[];
+  name?: string;
 }
 
 interface Names {
