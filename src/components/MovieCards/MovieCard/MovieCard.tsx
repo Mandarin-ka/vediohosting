@@ -10,15 +10,22 @@ function MovieCard({ movie }: { movie: Movie }) {
   return movie ? (
     <div>
       <div className={styles.card}>
-        <img src={movie.poster?.url || ''} alt='' className={styles.poster} />
+        <img
+          src={
+            movie.poster?.url ||
+            'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'
+          }
+          alt=''
+          className={styles.poster}
+        />
         <div className={styles.info__wrapper}>
           <img
-            src={getOneDirector(movie)?.photo || ''}
+            src={getOneDirector(movie)?.photo}
             alt=''
             className={styles.thumbnail}
           />
           <div className={styles.info}>
-            <h2 className={styles.title}>{movie.name || '...'}</h2>
+            <h2 className={styles.title}>{movie.names[0]?.name}</h2>
             <div className={styles.bottom__info}>
               <h3 className={styles.director}>
                 {getOneDirector(movie)?.name || 'Неизвестно'}

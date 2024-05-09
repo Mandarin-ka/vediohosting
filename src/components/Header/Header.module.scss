@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.logo__wrapper {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.logo {
+  width: 40px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: $buttons-color;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-top: 7px solid transparent;
+  border-left: 14px solid $white;
+  border-bottom: 7px solid transparent;
+}
+
+.title {
+  width: fit-content;
+  font-size: 1.5em;
+  font-weight: bold;
+}

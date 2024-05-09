@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import * as styles from './GenreButton.module.scss';
 
 function GenreButton({
@@ -19,4 +20,4 @@ function GenreButton({
   );
 }
 
-export default GenreButton;
+export default memo(GenreButton);

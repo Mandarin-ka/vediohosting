@@ -9,25 +9,13 @@ export const getKinopoiskMovies = async (
   try {
     const url = 'https://api.kinopoisk.dev/v1.4/movie';
     const params = {
-      selectFields: [
-        'id',
-        'name',
-        'year',
-        'persons',
-        'poster',
-        'genres',
-        'names',
-      ],
       limit: 16,
       page: page || 1,
       'genres.name': genre || null,
-      notNullFields: [
-        'poster.url',
-        'persons.profession',
-        'persons.enProfession',
-        'persons.name',
-        'persons.enName',
-      ],
+      selectFields: ['id', 'names', 'year', 'poster', 'persons'],
+
+      sortField: ['audience.count'],
+      sortType: [-1],
     };
 
     const response: AxiosResponseMovies = await axios.get(url, {
