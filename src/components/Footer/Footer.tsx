@@ -1,8 +1,9 @@
 import inst from '@/assets/images/inst.png';
-import facebook from '@/assets/images/fb.png';
-import twitter from '@/assets/images/twitter.png';
-import linkedin from '@/assets/images/in.png';
+import Facebook from '@/assets/icons/links/fb.svg';
+import Twitter from '@/assets/icons/links/twitter.svg';
+import Linkedin from '@/assets/icons/links/linkedin.svg';
 import { links } from './links';
+import Inst from '@/assets/icons/links/inst.svg';
 
 import * as styles from './Footer.module.scss';
 
@@ -47,17 +48,17 @@ function Footer() {
           </div>
         </div>
         <div className={styles.links}>
-          <a href={links.facebook} className='link'>
-            <img src={facebook} alt='' className='img' />
+          <a href={links.facebook} className={styles.link}>
+            {<Facebook className={`${styles.img} ${styles.fb}`} />}
           </a>
-          <a href={links.twitter} className='link'>
-            <img src={twitter} alt='' className='img' />
+          <a href={links.twitter} className={styles.link}>
+            {<Twitter className={`${styles.img} ${styles.twitter}`} />}
           </a>
-          <a href={links.inst} className='link'>
-            <img src={inst} alt='' className='img' />
+          <a href={links.inst} className={styles.link}>
+            {<Inst className={`${styles.img} ${styles.inst}`} />}
           </a>
-          <a href={links.linkedin} className='link'>
-            <img src={linkedin} alt='' className='img' />
+          <a href={links.linkedin} className={styles.link}>
+            {<Linkedin className={`${styles.img} ${styles.linkedin}`} />}
           </a>
         </div>
         <p className={styles.license}>2023 Modsen company</p>

@@ -32,8 +32,13 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     ],
   };
 
+  const svgrLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  };
+
   const assetLoader = {
-    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
   };
 
@@ -43,5 +48,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     exclude: /node_modules/,
   };
 
-  return [assetLoader, cssLoader, tsLoader];
+  return [assetLoader, svgrLoader, cssLoader, tsLoader];
 }
