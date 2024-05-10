@@ -17,25 +17,31 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     },
   };
 
-  return [
-    {
-      test: /\.s[ac]ss$/i,
-      use: [
-        { loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader },
-        cssLoadersWithModules,
-        'sass-loader',
-        {
-          loader: 'sass-resources-loader',
-          options: {
-            resources: './src/styles/vars.scss',
-          },
+  const cssLoader = {
+    test: /\.s[ac]ss$/i,
+    use: [
+      { loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader },
+      cssLoadersWithModules,
+      'sass-loader',
+      {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: './src/styles/vars.scss',
         },
-      ],
-    },
-    {
-      test: /\.tsx?$/,
-      use: 'ts-loader',
-      exclude: /node_modules/,
-    },
-  ];
+      },
+    ],
+  };
+
+  const assetLoader = {
+    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    type: 'asset/resource',
+  };
+
+  const tsLoader = {
+    test: /\.tsx?$/,
+    use: 'ts-loader',
+    exclude: /node_modules/,
+  };
+
+  return [assetLoader, cssLoader, tsLoader];
 }

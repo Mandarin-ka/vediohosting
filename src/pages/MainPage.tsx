@@ -10,8 +10,7 @@ import { AxiosResponseMovies } from '@/types/axiosResponse';
 import { Movie } from '@/types/movies';
 import Button from '@/ui/Buttons/PaginationButton/PaginationButton';
 
-import '@/styles/reset.scss';
-import '@/styles/vars.scss';
+import Footer from '@/components/Footer/Footer';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);
@@ -67,6 +66,8 @@ function MainPage() {
         <MovieCards movies={movies} />
         <Button text='Load More' onClick={loadNewPage} />
       </div>
+
+      <Footer />
     </ErrorBoundary>
   );
 }
