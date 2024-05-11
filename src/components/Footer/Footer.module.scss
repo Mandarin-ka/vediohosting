@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   border-top: 2px solid $footer-line-color;
-  padding: 54px 0 70px;
+  padding: 54px 0 80px;
   box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@
   font-size: 24px;
   color: $license-text-color;
   font-weight: 600;
-  bottom: 0;
+  bottom: 15px;
   left: 0;
   right: 0;
   width: fit-content;
