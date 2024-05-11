@@ -11,7 +11,6 @@ export const getKinopoiskMovie = async (
     limit: 16,
     page: page || 1,
     query: query,
-    selectFields: ['id', 'names', 'year', 'poster', 'persons', 'name'],
   };
 
   try {

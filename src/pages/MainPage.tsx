@@ -7,24 +7,12 @@ import Footer from '@components/Footer/Footer';
 import Header from '@components/Header/Header';
 import MovieCards from '@components/MovieCards/MovieCards';
 import Button from '@ui/Buttons/PaginationButton/PaginationButton';
-import { loadDataByGenre, loadDataByQuery } from '@utils/data/loadData';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);
   const [genre, setGenre] = useState<string>('');
-  const [movies, setMovies] = useState<Movie[] | null[]>([]);
-  const [isLoadingNewPage, setIsLoadingNewPage] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
-
-  useEffect(() => {
-    if (query) {
-      loadDataByQuery(movies, isLoadingNewPage, setMovies, { page, query });
-      isLoadingNewPage && setIsLoadingNewPage(false);
-    } else {
-      loadDataByGenre(movies, isLoadingNewPage, setMovies, { page, genre });
-      isLoadingNewPage && setIsLoadingNewPage(false);
-    }
-  }, [page, genre, query]);
+  const [isLoadingNewPage, setIsLoadingNewPage] = useState<boolean>(false);
 
   const loadNewPage = useCallback(() => {
     setIsLoadingNewPage(true);
@@ -36,7 +24,13 @@ function MainPage() {
       <div className='App'>
         <Header setQuery={setQuery} />
         <ControlPanel genre={genre} setGenre={setGenre} />
-        <MovieCards movies={movies} />
+        <MovieCards
+          query={query}
+          genre={genre}
+          page={page}
+          isLoadingNewPage={isLoadingNewPage}
+          setIsLoadingNewPage={setIsLoadingNewPage}
+        />
         <Button text='Load More' onClick={loadNewPage} />
       </div>
 

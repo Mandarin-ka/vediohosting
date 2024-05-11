@@ -13,7 +13,6 @@ export const getKinopoiskMovies = async (
       page: page || 1,
       'genres.name': genre || null,
       selectFields: ['id', 'names', 'year', 'poster', 'persons', 'name'],
-
       sortField: ['audience.count'],
       sortType: [-1],
     };
