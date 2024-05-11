@@ -4,13 +4,14 @@ import { getKinopoiskMovie } from '@/API/kinopoisk/getKinopoiskMovie';
 import { getKinopoiskMovies } from '@/API/kinopoisk/getKinopoiskMovies';
 import ControlPanel from '@/components/ControlPanel/ControlPanel';
 import ErrorBoundary from '@/components/ErrorBoundaries/ErrorBoundaries';
+import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import MovieCards from '@/components/MovieCards/MovieCards';
 import { AxiosResponseMovies } from '@/types/axiosResponse';
 import { Movie } from '@/types/movies';
 import Button from '@/ui/Buttons/PaginationButton/PaginationButton';
-
-import Footer from '@/components/Footer/Footer';
+import { kinopoiskData } from '@/fakeData/kinopoiskMovies';
+import { loadDataByGenre, loadDataByQuery } from '@/utils/data/loadData';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);
@@ -20,36 +21,12 @@ function MainPage() {
   const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
-    if (!query) {
-      if (isLoadingNewPage) {
-        setMovies([...movies, ...Array(16).fill(null)]);
-        getKinopoiskMovies(page, genre).then(
-          (response: AxiosResponseMovies) => {
-            setMovies([...movies, ...response.data.docs]);
-          }
-        );
-        setIsLoadingNewPage(false);
-      } else {
-        setMovies(Array(16).fill(null));
-        getKinopoiskMovies(page, genre).then(
-          (response: AxiosResponseMovies) => {
-            setMovies(response.data.docs);
-          }
-        );
-      }
+    if (query) {
+      loadDataByQuery(movies, isLoadingNewPage, setMovies, { page, query });
+      isLoadingNewPage && setIsLoadingNewPage(false);
     } else {
-      if (isLoadingNewPage) {
-        setMovies([...movies, ...Array(16).fill(null)]);
-        getKinopoiskMovie(1, query).then((response: AxiosResponseMovies) => {
-          setMovies([...movies, ...response.data.docs]);
-        });
-        setIsLoadingNewPage(false);
-      } else {
-        setMovies(Array(16).fill(null));
-        getKinopoiskMovie(1, query).then((response: AxiosResponseMovies) => {
-          setMovies(response.data.docs);
-        });
-      }
+      loadDataByGenre(movies, isLoadingNewPage, setMovies, { page, genre });
+      isLoadingNewPage && setIsLoadingNewPage(false);
     }
   }, [page, genre, query]);
 

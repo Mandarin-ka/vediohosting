@@ -130,4 +130,4 @@ build/*
 .yarn/install-state.gz
 .pnp.*
 
-fakeData/
+fakeData
