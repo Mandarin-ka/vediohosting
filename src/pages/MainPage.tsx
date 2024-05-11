@@ -1,17 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { getKinopoiskMovie } from '@/API/kinopoisk/getKinopoiskMovie';
-import { getKinopoiskMovies } from '@/API/kinopoisk/getKinopoiskMovies';
-import ControlPanel from '@/components/ControlPanel/ControlPanel';
-import ErrorBoundary from '@/components/ErrorBoundaries/ErrorBoundaries';
-import Footer from '@/components/Footer/Footer';
-import Header from '@/components/Header/Header';
-import MovieCards from '@/components/MovieCards/MovieCards';
-import { AxiosResponseMovies } from '@/types/axiosResponse';
 import { Movie } from '@/types/movies';
-import Button from '@/ui/Buttons/PaginationButton/PaginationButton';
-import { kinopoiskData } from '@/fakeData/kinopoiskMovies';
-import { loadDataByGenre, loadDataByQuery } from '@/utils/data/loadData';
+import ControlPanel from '@components/ControlPanel/ControlPanel';
+import ErrorBoundary from '@components/ErrorBoundaries/ErrorBoundaries';
+import Footer from '@components/Footer/Footer';
+import Header from '@components/Header/Header';
+import MovieCards from '@components/MovieCards/MovieCards';
+import Button from '@ui/Buttons/PaginationButton/PaginationButton';
+import { loadDataByGenre, loadDataByQuery } from '@utils/data/loadData';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);

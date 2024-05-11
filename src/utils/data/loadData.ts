@@ -1,7 +1,7 @@
-import { getKinopoiskMovie } from '@/API/kinopoisk/getKinopoiskMovie';
-import { getKinopoiskMovies } from '@/API/kinopoisk/getKinopoiskMovies';
 import { AxiosResponseMovies } from '@/types/axiosResponse';
 import { Movie } from '@/types/movies';
+import { getKinopoiskMovie } from '@API/kinopoisk/getKinopoiskMovie';
+import { getKinopoiskMovies } from '@API/kinopoisk/getKinopoiskMovies';
 
 const setStub = (
   data: Movie[],

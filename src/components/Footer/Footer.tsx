@@ -1,8 +1,8 @@
 import { links } from './links';
-import Facebook from '@/assets/icons/links/fb.svg';
-import Inst from '@/assets/icons/links/inst.svg';
-import Linkedin from '@/assets/icons/links/linkedin.svg';
-import Twitter from '@/assets/icons/links/twitter.svg';
+import Facebook from '@assets/icons/links/fb.svg';
+import Inst from '@assets/icons/links/inst.svg';
+import Linkedin from '@assets/icons/links/linkedin.svg';
+import Twitter from '@assets/icons/links/twitter.svg';
 
 import * as styles from './Footer.module.scss';
 

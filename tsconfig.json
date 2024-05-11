@@ -15,7 +15,6 @@
       "@/*": ["./src/*"],
       "@pages/*": ["./src/pages/*"],
       "@API/*": ["./src/API/*"],
-      "@types/*": ["./src/types/*"],
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
       "@store/*": ["./src/store/*"],
