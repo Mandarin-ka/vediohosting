@@ -30,4 +30,8 @@
   &:hover::after {
     left: 120%;
   }
+
+  &.dark {
+    background-color: $dark-buttons-color;
+  }
 }

@@ -36,7 +36,7 @@ function ControlPanel({
   return (
     <div className={styles.panel}>
       <GenreButton
-        text={'All'}
+        text={'Все'}
         onClick={toggleGenre}
         className={genre === '' ? 'active' : ''}
       />

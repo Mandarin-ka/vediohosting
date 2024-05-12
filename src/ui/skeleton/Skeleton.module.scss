@@ -12,20 +12,25 @@
     left: -100px;
     transform: rotate(15deg);
     box-shadow: 0 0 20px $stub-blick-color;
-    animation: blink 3s ease-in infinite;
+    animation: blink 3s linear infinite;
+  }
+
+  &.dark::before {
+    background-color: $dark-stub-blick-color;
+    box-shadow: 0 0 20px $dark-stub-blick-color;
   }
 }
 
 @keyframes blink {
   0% {
-    left: -100px;
+    left: -130px;
   }
 
-  10% {
-    left: -100px;
+  20% {
+    left: -130px;
   }
 
-  23% {
+  35% {
     left: 500px;
   }
 
@@ -96,8 +101,17 @@
 .director__stub,
 .year__stub,
 .year__stub::before {
-  background-color: $stub-color;
   border-radius: 10px;
+  background-color: $stub-color;
+}
+
+.poster__stub.dark,
+.title__stub.dark,
+.thumbnail__stub.dark,
+.director__stub.dark,
+.year__stub.dark,
+.year__stub.dark::before {
+  background-color: $dark-stub-color;
 }
 
 .poster__stub {

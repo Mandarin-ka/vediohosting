@@ -10,10 +10,20 @@
   &:hover,
   &.active {
     background-color: $black;
-    color: white;
+    color: $white;
   }
 
   &.active {
     pointer-events: none;
+  }
+
+  &.dark {
+    border-color: $dark-buttons-color;
+    color: $dark-text-color;
+
+    &:hover,
+    &.active {
+      color: $dark-buttons-color;
+    }
   }
 }

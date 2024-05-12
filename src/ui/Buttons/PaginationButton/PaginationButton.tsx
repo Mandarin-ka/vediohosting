@@ -1,5 +1,7 @@
 import { memo } from 'react';
 
+import { useAppSelector } from '@/hooks/redux/useAppSelector';
+
 import * as styles from './PaginationButton.module.scss';
 
 function PaginationButton({
@@ -9,8 +11,10 @@ function PaginationButton({
   text?: string;
   onClick?: () => void;
 }) {
+  const { theme } = useAppSelector((state) => state.ThemeReducer);
+
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button className={`${styles.button} ${styles[theme]}`} onClick={onClick}>
       {text}
     </button>
   );

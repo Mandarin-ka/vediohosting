@@ -1,9 +1,10 @@
+import { useEffect, useState } from 'react';
+
 import MovieCard from './MovieCard/MovieCard';
 import { Movie } from '@/types/movies';
+import { loadDataByGenre, loadDataByQuery } from '@/utils/data/loadData';
 
 import * as styles from './MovieCards.module.scss';
-import { useEffect, useState } from 'react';
-import { loadDataByGenre, loadDataByQuery } from '@/utils/data/loadData';
 
 interface Props {
   query: string;
