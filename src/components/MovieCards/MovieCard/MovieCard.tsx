@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { Movie } from '@/types/movies';
-import Skeleton from '@/ui/Skeleton/Skeleton';
+// import Skeleton from '@/ui/Skeleton/Skeleton';
 import { getOneDirector } from '@utils/cards/getDirector';
 
 import * as styles from './MovieCard.module.scss';
@@ -44,7 +44,8 @@ function MovieCard({ movie }: { movie: Movie }) {
       </div>
     </div>
   ) : (
-    <Skeleton />
+    <h2>skeleton</h2>
+    // <Skeleton />
   );
 }
 
