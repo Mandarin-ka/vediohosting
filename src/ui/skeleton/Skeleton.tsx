@@ -14,7 +14,7 @@ function Skeleton() {
           <div className={styles.info__stub}>
             <div className={`${styles.title__stub} ${styles[theme]}`} />
             <div className={styles.bottom__info__stub}>
-              <div className={`${styles.director__stub} ${styles[theme]}`} />
+              <div className={`${styles.director__stub}  ${styles[theme]}`} />
               <div className={`${styles.year__stub} ${styles[theme]}`} />
             </div>
           </div>
