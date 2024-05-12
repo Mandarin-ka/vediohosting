@@ -13,15 +13,8 @@ const container = createRoot(root);
 
 const store = setupStore();
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-]);
-
 container.render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <App />
   </Provider>
 );
