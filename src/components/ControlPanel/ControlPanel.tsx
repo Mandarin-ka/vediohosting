@@ -30,7 +30,7 @@ function ControlPanel({
   const toggleGenre = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const value = (e.target as HTMLElement).textContent;
-    setGenre(value.toLowerCase() === 'all' ? '' : value);
+    setGenre(value.toLowerCase() === 'все' ? '' : value);
   };
 
   return (
