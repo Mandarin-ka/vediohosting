@@ -23,17 +23,19 @@ function MainPage() {
 
   return (
     <div className={`App ${theme}`}>
-      <Header setQuery={setQuery} />
-      <ControlPanel genre={genre} setGenre={setGenre} />
+      <main>
+        <Header setQuery={setQuery} />
+        <ControlPanel genre={genre} setGenre={setGenre} />
 
-      <MovieCards
-        query={query}
-        genre={genre}
-        page={page}
-        isLoadingNewPage={isLoadingNewPage}
-        setIsLoadingNewPage={setIsLoadingNewPage}
-      />
-      <Button text='Load More' onClick={loadNewPage} />
+        <MovieCards
+          query={query}
+          genre={genre}
+          page={page}
+          isLoadingNewPage={isLoadingNewPage}
+          setIsLoadingNewPage={setIsLoadingNewPage}
+        />
+        <Button text='Load More' onClick={loadNewPage} />
+      </main>
       <Footer />
     </div>
   );
