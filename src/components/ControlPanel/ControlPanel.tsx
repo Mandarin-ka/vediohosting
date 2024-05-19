@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
-// import { getKinopoiskGenres } from '@/API/kinopoisk/getKinopoiskGenres';
-import { genresData } from '@/fakeData/kinopoiskGenres'; //TODO: Fake
-// import { AxiosResponseGenre } from '@/types/axiosResponse';
+import { getKinopoiskGenres } from '@/API/kinopoisk/getKinopoiskGenres';
+import { AxiosResponseGenre } from '@/types/axiosResponse';
 import { Genre } from '@/types/genres';
 import GenreButton from '@/ui/Buttons/GenreButton/GenreButton';
 
@@ -18,13 +17,9 @@ function ControlPanel({
   const [genres, setGenres] = useState<Genre[]>([]);
 
   useEffect(() => {
-    // getKinopoiskGenres().then((response: AxiosResponseGenre) => {
-    //   setGenres(response.data);
-    // });
-    setTimeout(
-      () => setGenres(genresData), //TODO: Fake
-      1000
-    );
+    getKinopoiskGenres().then((response: AxiosResponseGenre) => {
+      setGenres(response.data);
+    });
   }, []);
 
   const toggleGenre = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

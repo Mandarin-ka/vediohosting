@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { Movie } from '@/types/movies';
@@ -6,13 +6,29 @@ import Skeleton from '@/ui/Skeleton/Skeleton';
 import { getOneDirector } from '@utils/cards/getDirector';
 
 import * as styles from './MovieCard.module.scss';
+import Videoplayer from '@/components/Videoplayer/Videoplayer';
+import Modal from '@/components/Modal/Modal';
+import { ClickEventType } from '@/components/Modal/config';
 
 function MovieCard({ movie }: { movie: Movie }) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (e: ClickEventType) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
+
   return movie ? (
     <div>
-      <div className={styles.card}>
+      {isModalOpen && (
+        <Modal setIsActive={setIsModalOpen} isActive={isModalOpen}>
+          <Videoplayer videoUrl={movie.videos.trailers[0].url} />
+        </Modal>
+      )}
+
+      <div className={styles.card} onClick={openModal}>
         <img
           src={
             movie.poster?.url ||

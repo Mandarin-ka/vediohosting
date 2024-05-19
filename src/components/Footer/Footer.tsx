@@ -64,7 +64,7 @@ function Footer() {
           </a>
         </div>
         <p className={`${styles.license} ${styles[theme]}`}>
-          2023 Modsen company
+          2024 Modsen company
         </p>
       </div>
     </footer>

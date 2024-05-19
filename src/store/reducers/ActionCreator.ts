@@ -15,8 +15,17 @@ export function fetchMoviesByGenre(
       limit: 16,
       page: page || 1,
       'genres.name': genre || null,
-      selectFields: ['id', 'names', 'year', 'poster', 'persons', 'name'],
+      selectFields: [
+        'id',
+        'names',
+        'year',
+        'poster',
+        'persons',
+        'name',
+        'videos',
+      ],
       sortField: ['audience.count'],
+      notNullFields: ['videos.trailers.url'],
       sortType: [-1],
     };
 

@@ -8,14 +8,26 @@ export interface ResponseKiniopoisk {
 
 export interface Movie {
   id: number;
-  names: Names[];
+  names: Name[];
   year: number;
   poster: Poster;
   persons: Persons[];
   name?: string;
+  videos: Video;
 }
 
-interface Names {
+interface Video {
+  trailers: Trailer[];
+}
+
+interface Trailer {
+  name: string;
+  site: string;
+  type: string;
+  url: string;
+}
+
+interface Name {
   name: string;
   language?: string;
   type?: string;
