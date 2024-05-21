@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react';
 
+import Modal from '@/components/Modal/Modal';
+import Videoplayer from '@/components/Videoplayer/Videoplayer';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import ControlPanel from '@components/ControlPanel/ControlPanel';
 import Footer from '@components/Footer/Footer';
@@ -8,8 +10,6 @@ import MovieCards from '@components/MovieCards/MovieCards';
 import Button from '@ui/Buttons/PaginationButton/PaginationButton';
 
 import './MainPage.scss';
-import Modal from '@/components/Modal/Modal';
-import Videoplayer from '@/components/Videoplayer/Videoplayer';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);

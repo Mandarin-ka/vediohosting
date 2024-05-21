@@ -40,8 +40,6 @@ function MovieCards({
 
       dispatch(fetchMoviesByGenre(page, genre, isNewPageLoad));
       isLoadingNewPage && setIsLoadingNewPage(false);
-
-      console.log(movies);
     }
   }, [page, genre, query]);
 

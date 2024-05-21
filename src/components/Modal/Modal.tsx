@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
+
 import { ClickEventType } from './config';
+
 import * as styles from './Modal.module.scss';
 
 const modalRoot = document.getElementById('modal');

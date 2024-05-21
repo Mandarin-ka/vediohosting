@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { getKinopoiskGenres } from '@/API/kinopoisk/getKinopoiskGenres';
+import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
+import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { movieSlice } from '@/store/reducers/MovieReducer';
 import { AxiosResponseGenre } from '@/types/axiosResponse';
 import { Genre } from '@/types/genres';
 import GenreButton from '@/ui/Buttons/GenreButton/GenreButton';
@@ -15,6 +18,8 @@ function ControlPanel({
   setGenre: (genre: string) => void;
 }) {
   const [genres, setGenres] = useState<Genre[]>([]);
+  const { movieFetchingSuccess } = movieSlice.actions;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     getKinopoiskGenres().then((response: AxiosResponseGenre) => {
@@ -26,6 +31,7 @@ function ControlPanel({
     e.preventDefault();
     const value = (e.target as HTMLElement).textContent;
     setGenre(value.toLowerCase() === 'все' ? '' : value);
+    dispatch(movieFetchingSuccess([]));
   };
 
   return (
