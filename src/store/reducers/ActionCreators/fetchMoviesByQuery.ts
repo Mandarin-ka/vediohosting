@@ -16,7 +16,7 @@ export function fetchMoviesByQuery(
     try {
       dispatch(movieSlice.actions.movieFetching());
       const responseIds = await axios.get<ResponseKiniopoisk>(`${url}/search`, {
-        headers: { 'X-API-KEY': process.env.X_API_KEY },
+        headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' },
         params: { limit: 16, page: page || 1, query: query },
         paramsSerializer: { indexes: null },
       });
@@ -25,7 +25,7 @@ export function fetchMoviesByQuery(
 
       const response = await axios.get<ResponseKiniopoisk>(url, {
         headers: {
-          'X-API-KEY': process.env.X_API_KEY,
+          'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7',
         },
         params: {
           limit: 16,

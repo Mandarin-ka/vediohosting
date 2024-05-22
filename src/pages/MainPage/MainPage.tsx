@@ -25,7 +25,7 @@ function MainPage() {
     <div className={`App ${theme}`}>
       <main>
         <Header setQuery={setQuery} />
-        {/* <ControlPanel genre={genre} setGenre={setGenre} /> */}
+        <ControlPanel genre={genre} setGenre={setGenre} />
 
         <MovieCards
           query={query}
