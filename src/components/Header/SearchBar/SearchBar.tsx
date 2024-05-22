@@ -18,6 +18,11 @@ function SearchBar(props: SearchBarProps) {
     props.setQuery(value);
   };
 
+  const keyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key.toLowerCase() === 'enter') {
+      onClick();
+    }
+  };
   return (
     <div className={styles.search__wrapper}>
       <input
@@ -26,6 +31,7 @@ function SearchBar(props: SearchBarProps) {
         placeholder={props?.placeholder || 'Search'}
         value={value}
         onChange={onChange}
+        onKeyDown={keyPress}
       />
       <button className={styles.button} onClick={onClick}>
         <div className={styles.loupe}></div>

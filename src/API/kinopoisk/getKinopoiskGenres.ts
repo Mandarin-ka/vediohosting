@@ -8,7 +8,7 @@ export const getKinopoiskGenres = async (): Promise<AxiosResponseGenre> => {
     const params = { field: 'genres.name' };
 
     const response: AxiosResponseGenre = await axios.get(url, {
-      headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' },
+      headers: { 'X-API-KEY': process.env.X_API_KEY },
       params: { ...params },
     });
 

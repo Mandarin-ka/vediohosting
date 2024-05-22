@@ -4,18 +4,23 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildOptions } from './types/types';
 import ESLintPlugin from 'eslint-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 export function buildPlugins({
   mode,
   paths,
 }: BuildOptions): Configuration['plugins'] {
   const isDev = mode === 'development';
+  const dotenvFilename = '.env';
 
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
     new MiniCssExtractPlugin(),
+    new Dotenv({
+      path: dotenvFilename,
+    }),
   ];
 
   if (isDev) {

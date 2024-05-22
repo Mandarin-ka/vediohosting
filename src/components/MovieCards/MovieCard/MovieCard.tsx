@@ -1,9 +1,9 @@
 import { memo, useState } from 'react';
 
-import { ClickEventType } from '@/components/Modal/config';
 import Modal from '@/components/Modal/Modal';
 import Videoplayer from '@/components/Videoplayer/Videoplayer';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
 import Skeleton from '@/ui/Skeleton/Skeleton';
 import { getOneDirector } from '@utils/cards/getDirector';
@@ -21,7 +21,7 @@ function MovieCard({ movie }: { movie: Movie }) {
   };
 
   return movie ? (
-    <div>
+    <>
       {isModalOpen && (
         <Modal setIsActive={setIsModalOpen} isActive={isModalOpen}>
           <Videoplayer videoUrl={movie.videos?.trailers[0]?.url || ''} />
@@ -58,7 +58,7 @@ function MovieCard({ movie }: { movie: Movie }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   ) : (
     <Skeleton />
   );

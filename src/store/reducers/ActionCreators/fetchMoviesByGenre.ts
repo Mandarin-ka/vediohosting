@@ -33,7 +33,7 @@ export function fetchMoviesByGenre(
       dispatch(movieSlice.actions.movieFetching());
 
       const response = await axios.get<ResponseKiniopoisk>(url, {
-        headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' }, //todo: .env
+        headers: { 'X-API-KEY': process.env.X_API_KEY },
         params: { ...params },
         paramsSerializer: { indexes: null },
       });

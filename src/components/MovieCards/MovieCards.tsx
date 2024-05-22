@@ -13,6 +13,7 @@ interface Props {
   query: string;
   genre: string;
   page: number;
+  setPage: (page: number) => void;
   isLoadingNewPage: boolean;
   setIsLoadingNewPage: (elem: boolean) => void;
 }
@@ -21,6 +22,7 @@ function MovieCards({
   query,
   genre,
   page,
+  setPage,
   isLoadingNewPage,
   setIsLoadingNewPage,
 }: Props) {
@@ -29,15 +31,15 @@ function MovieCards({
 
   useEffect(() => {
     if (query) {
-      const isNewPageLoad = isLoadingNewPage;
-
-      dispatch(fetchMoviesByQuery(page, query, isNewPageLoad, genre));
-      isLoadingNewPage && setIsLoadingNewPage(false);
+      dispatch(fetchMoviesByQuery(page, query, isLoadingNewPage, genre));
     } else {
-      const isNewPageLoad = isLoadingNewPage;
+      dispatch(fetchMoviesByGenre(page, genre, isLoadingNewPage));
+    }
 
-      dispatch(fetchMoviesByGenre(page, genre, isNewPageLoad));
-      isLoadingNewPage && setIsLoadingNewPage(false);
+    if (isLoadingNewPage) {
+      setIsLoadingNewPage(false);
+    } else {
+      setPage(1);
     }
   }, [page, genre, query]);
 

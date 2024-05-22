@@ -33,6 +33,7 @@ function MainPage() {
           page={page}
           isLoadingNewPage={isLoadingNewPage}
           setIsLoadingNewPage={setIsLoadingNewPage}
+          setPage={setPage}
         />
         <Button text='Load More' onClick={loadNewPage} />
       </main>
