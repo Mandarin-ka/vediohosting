@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { AppDispatch } from '../store';
-import { movieSlice } from './MovieReducer';
+import { movieSlice } from '../MovieReducer';
+import { AppDispatch } from '@/store/store';
 import { ResponseKiniopoisk } from '@/types/movies';
 
 export function fetchMoviesByGenre(
@@ -24,7 +24,7 @@ export function fetchMoviesByGenre(
         'name',
         'videos',
       ],
-      sortField: ['audience.count'],
+      sortField: ['top250'],
       notNullFields: ['videos.trailers.url'],
       sortType: [-1],
     };
@@ -33,7 +33,7 @@ export function fetchMoviesByGenre(
       dispatch(movieSlice.actions.movieFetching());
 
       const response = await axios.get<ResponseKiniopoisk>(url, {
-        headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' },
+        headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' }, //todo: .env
         params: { ...params },
         paramsSerializer: { indexes: null },
       });
@@ -43,41 +43,6 @@ export function fetchMoviesByGenre(
           movieSlice.actions.movieFetchingNewPageSuccess(response.data.docs)
         );
       } else {
-        dispatch(movieSlice.actions.movieFetchingSuccess(Array(16).fill(null)));
-        dispatch(movieSlice.actions.movieFetchingSuccess(response.data.docs));
-      }
-    } catch (e) {
-      dispatch(movieSlice.actions.movieFetchingError(e.message));
-    }
-  };
-}
-
-export function fetchMoviesByQuery(
-  page?: number,
-  query?: string,
-  isNewPage?: boolean
-) {
-  return async (dispatch: AppDispatch) => {
-    const url = 'https://api.kinopoisk.dev/v1.4/movie/search';
-    const params = {
-      limit: 16,
-      page: page || 1,
-      query: query,
-    };
-
-    try {
-      dispatch(movieSlice.actions.movieFetching());
-      const response = await axios.get<ResponseKiniopoisk>(url, {
-        headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' }, //TODO: добавить в .env
-        params: { ...params },
-        paramsSerializer: { indexes: null },
-      });
-
-      if (isNewPage)
-        dispatch(
-          movieSlice.actions.movieFetchingNewPageSuccess(response.data.docs)
-        );
-      else {
         dispatch(movieSlice.actions.movieFetchingSuccess(Array(16).fill(null)));
         dispatch(movieSlice.actions.movieFetchingSuccess(response.data.docs));
       }

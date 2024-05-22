@@ -24,7 +24,7 @@ function MovieCard({ movie }: { movie: Movie }) {
     <div>
       {isModalOpen && (
         <Modal setIsActive={setIsModalOpen} isActive={isModalOpen}>
-          <Videoplayer videoUrl={movie.videos.trailers[0].url} />
+          <Videoplayer videoUrl={movie.videos?.trailers[0]?.url || ''} />
         </Modal>
       )}
 

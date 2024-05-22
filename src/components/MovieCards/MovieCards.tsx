@@ -3,10 +3,8 @@ import { useEffect } from 'react';
 import MovieCard from './MovieCard/MovieCard';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
-import {
-  fetchMoviesByGenre,
-  fetchMoviesByQuery,
-} from '@/store/reducers/ActionCreator';
+import { fetchMoviesByGenre } from '@/store/reducers/ActionCreators/fetchMoviesByGenre';
+import { fetchMoviesByQuery } from '@/store/reducers/ActionCreators/fetchMoviesByQuery';
 import { Movie } from '@/types/movies';
 
 import * as styles from './MovieCards.module.scss';
@@ -33,7 +31,7 @@ function MovieCards({
     if (query) {
       const isNewPageLoad = isLoadingNewPage;
 
-      dispatch(fetchMoviesByQuery(page, query, isNewPageLoad));
+      dispatch(fetchMoviesByQuery(page, query, isNewPageLoad, genre));
       isLoadingNewPage && setIsLoadingNewPage(false);
     } else {
       const isNewPageLoad = isLoadingNewPage;
