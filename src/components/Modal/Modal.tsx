@@ -1,7 +1,6 @@
-import { useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 
-import { ClickEventType } from './config';
+import { ClickEventType } from '@/types/clickEventType';
 
 import * as styles from './Modal.module.scss';
 

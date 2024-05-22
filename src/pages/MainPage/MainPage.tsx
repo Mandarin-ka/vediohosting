@@ -1,7 +1,5 @@
 import { useCallback, useState } from 'react';
 
-import Modal from '@/components/Modal/Modal';
-import Videoplayer from '@/components/Videoplayer/Videoplayer';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import ControlPanel from '@components/ControlPanel/ControlPanel';
 import Footer from '@components/Footer/Footer';
@@ -22,8 +20,6 @@ function MainPage() {
     setIsLoadingNewPage(true);
     setPage((prevValue) => prevValue + 1);
   }, []);
-
-  const [isModal, setIsModal] = useState(true);
 
   return (
     <div className={`App ${theme}`}>

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { getKinopoiskGenres } from '@/API/kinopoisk/getKinopoiskGenres';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { movieSlice } from '@/store/reducers/MovieReducer';
 import { AxiosResponseGenre } from '@/types/axiosResponse';
 import { Genre } from '@/types/genres';
