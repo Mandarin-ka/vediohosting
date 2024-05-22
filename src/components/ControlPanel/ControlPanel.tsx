@@ -22,6 +22,7 @@ function ControlPanel({
 
   useEffect(() => {
     getKinopoiskGenres().then((response: AxiosResponseGenre) => {
+      console.log(response);
       setGenres(response.data);
     });
   }, []);
