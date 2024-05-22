@@ -10,7 +10,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path='/build' element={<MainPage />} />
       </Routes>
     </ErrorBoundary>
   );
