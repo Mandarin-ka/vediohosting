@@ -42,11 +42,26 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     type: 'asset/resource',
   };
 
-  const tsLoader = {
+  // const tsLoader = {
+  //   test: /\.tsx?$/,
+  //   use: 'ts-loader',
+  //   exclude: /node_modules/,
+  // };
+
+  const babelLoader = {
     test: /\.tsx?$/,
-    use: 'ts-loader',
     exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-typescript',
+          ['@babel/preset-react', { runtime: 'automatic' }],
+        ],
+      },
+    },
   };
 
-  return [assetLoader, svgrLoader, cssLoader, tsLoader];
+  return [assetLoader, svgrLoader, cssLoader, babelLoader];
 }
