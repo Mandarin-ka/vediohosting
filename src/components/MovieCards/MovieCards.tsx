@@ -43,17 +43,20 @@ function MovieCards({
     }
   }, [page, genre, query]);
 
-  return (
-    <div className={styles.cards}>
-      {movies.map((movie: Movie, index: number) => (
-        <MovieCard movie={movie} key={movie?.id || index} />
-      ))}
-      {isLoading &&
-        Array(16)
-          .fill(null)
-          .map((e, i) => <MovieCard movie={e} key={i} />)}
-    </div>
-  );
+  if (movies)
+    return (
+      <div className={styles.cards}>
+        {movies.map((movie: Movie, index: number) => (
+          <MovieCard movie={movie} key={movie?.id || index} />
+        ))}
+        {isLoading &&
+          Array(16)
+            .fill(null)
+            .map((e, i) => <MovieCard movie={e} key={i} />)}
+      </div>
+    );
+
+  return <h1>Ничего не найдено</h1>;
 }
 
 export default MovieCards;
