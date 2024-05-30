@@ -31,7 +31,7 @@ function MovieCards({
 
   useEffect(() => {
     if (query) {
-      dispatch(fetchMoviesByQuery(page, query, isLoadingNewPage, genre));
+      dispatch(fetchMoviesByQuery(query, page, isLoadingNewPage, genre));
     } else {
       dispatch(fetchMoviesByGenre(page, genre, isLoadingNewPage));
     }

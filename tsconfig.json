@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "./bundle/",
-    "noImplicitAny": true,
+    "noImplicitAny": true, //change
     "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",

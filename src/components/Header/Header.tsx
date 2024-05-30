@@ -4,7 +4,13 @@ import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
 import * as styles from './Header.module.scss';
 
-function Header({ setQuery }: { setQuery: (query: string) => void }) {
+function Header({
+  query,
+  setQuery,
+}: {
+  query: string;
+  setQuery: (query: string) => void;
+}) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   return (
@@ -15,7 +21,7 @@ function Header({ setQuery }: { setQuery: (query: string) => void }) {
         </div>
         <h1 className={`${styles.title} ${styles[theme]}`}>ModsenFilms</h1>
       </div>
-      <SearchBar setQuery={setQuery} />
+      <SearchBar setQuery={setQuery} query={query} />
       <ThemeToggler />
     </header>
   );

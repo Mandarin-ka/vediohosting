@@ -1,8 +1,6 @@
-import axios from 'axios';
-
 import { movieSlice } from '../MovieReducer';
 import { AppDispatch } from '@/store/store';
-import { ResponseKiniopoisk } from '@/types/movies';
+import axiosInstance from '@/utils/axios/axiosWithCache';
 
 export function fetchMoviesByGenre(
   page?: number,
@@ -32,19 +30,27 @@ export function fetchMoviesByGenre(
     try {
       dispatch(movieSlice.actions.movieFetching());
 
-      const response = await axios.get<ResponseKiniopoisk>(url, {
-        headers: { 'X-API-KEY': process.env.X_API_KEY },
+      const responseWithCache = await axiosInstance.get(url, {
+        headers: {
+          'X-API-KEY': process.env.X_API_KEY,
+          'Content-Type': 'text/html; charset=utf-8',
+        },
         params: { ...params },
         paramsSerializer: { indexes: null },
+        cache: { ttl: 60 * 1000 * 5 },
       });
 
       if (isNewPage) {
         dispatch(
-          movieSlice.actions.movieFetchingNewPageSuccess(response.data.docs)
+          movieSlice.actions.movieFetchingNewPageSuccess(
+            responseWithCache.data.docs
+          )
         );
       } else {
         dispatch(movieSlice.actions.movieFetchingSuccess(Array(16).fill(null)));
-        dispatch(movieSlice.actions.movieFetchingSuccess(response.data.docs));
+        dispatch(
+          movieSlice.actions.movieFetchingSuccess(responseWithCache.data.docs)
+        );
       }
     } catch (e) {
       dispatch(movieSlice.actions.movieFetchingError(e.message));

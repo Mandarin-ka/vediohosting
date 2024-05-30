@@ -2,13 +2,12 @@ import { useState } from 'react';
 
 import * as styles from './SearchBar.module.scss';
 
-interface SearchBarProps {
+function SearchBar(props: {
   placeholder?: string;
+  query: string;
   setQuery: (q: string) => void;
-}
-
-function SearchBar(props: SearchBarProps) {
-  const [value, setValue] = useState('');
+}) {
+  const [value, setValue] = useState(props.query);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
@@ -20,9 +19,10 @@ function SearchBar(props: SearchBarProps) {
 
   const keyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key.toLowerCase() === 'enter') {
-      onClick();
+      props.setQuery(value);
     }
   };
+
   return (
     <div className={styles.search__wrapper}>
       <input

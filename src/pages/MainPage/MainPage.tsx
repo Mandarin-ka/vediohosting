@@ -24,8 +24,8 @@ function MainPage() {
   return (
     <div className={`App ${theme}`}>
       <main>
-        <Header setQuery={setQuery} />
-        <ControlPanel genre={genre} setGenre={setGenre} />
+        <Header setQuery={setQuery} query={query} />
+        <ControlPanel genre={genre} setGenre={setGenre} setQuery={setQuery} />
 
         <MovieCards
           query={query}

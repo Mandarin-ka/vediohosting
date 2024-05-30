@@ -12,9 +12,11 @@ import * as styles from './ControlPanel.module.scss';
 function ControlPanel({
   genre,
   setGenre,
+  setQuery,
 }: {
   genre: string;
   setGenre: (genre: string) => void;
+  setQuery: (el: string) => void;
 }) {
   const [genres, setGenres] = useState<Genre[]>([]);
   const { movieFetchingSuccess } = movieSlice.actions;
@@ -22,7 +24,6 @@ function ControlPanel({
 
   useEffect(() => {
     getKinopoiskGenres().then((response: AxiosResponseGenre) => {
-      console.log(response);
       setGenres(response.data);
     });
   }, []);
@@ -32,6 +33,7 @@ function ControlPanel({
     const value = (e.target as HTMLElement).textContent;
     setGenre(value.toLowerCase() === 'все' ? '' : value);
     dispatch(movieFetchingSuccess([]));
+    setQuery('');
   };
 
   return (

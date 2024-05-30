@@ -45,7 +45,7 @@ function MovieCard({ movie }: { movie: Movie }) {
           />
           <div className={styles.info}>
             <h2 className={`${styles.title} ${styles[theme]}`}>
-              {movie?.names[0]?.name || movie.name}
+              {movie.name || ' '}
             </h2>
             <div className={styles.bottom__info}>
               <h3 className={`${styles.director} ${styles[theme]}`}>
