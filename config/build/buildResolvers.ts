@@ -17,6 +17,7 @@ export function buildResolvers(
       '@store': [path.resolve(options.paths.baseUrl, 'store')],
       '@config': [path.resolve(options.paths.baseUrl, 'config')],
       '@assets': [path.resolve(options.paths.baseUrl, 'assets')],
+      '@hooks': [path.resolve(options.paths.baseUrl, 'hooks')],
     },
   };
 }

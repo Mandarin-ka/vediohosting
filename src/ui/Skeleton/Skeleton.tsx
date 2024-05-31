@@ -6,7 +6,7 @@ function Skeleton() {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   return (
-    <div>
+    <div data-testid='skeleton'>
       <div className={`${styles.card} ${styles[theme]}`}>
         <div className={`${styles.poster__stub} ${styles[theme]}`} />
         <div className={styles.info__wrapper__stub}>
