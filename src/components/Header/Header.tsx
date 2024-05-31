@@ -1,3 +1,4 @@
+import Burger from './Burger/Burger';
 import SearchBar from './SearchBar/SearchBar';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
@@ -7,9 +8,13 @@ import * as styles from './Header.module.scss';
 function Header({
   query,
   setQuery,
+  isBurger,
+  toggleBurger,
 }: {
   query: string;
   setQuery: (query: string) => void;
+  isBurger: boolean;
+  toggleBurger: () => void;
 }) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
@@ -22,7 +27,8 @@ function Header({
         <h1 className={`${styles.title} ${styles[theme]}`}>ModsenFilms</h1>
       </div>
       <SearchBar setQuery={setQuery} query={query} />
-      <ThemeToggler />
+      <Burger isActive={isBurger} onClick={toggleBurger} />
+      <ThemeToggler isActive={isBurger} />
     </header>
   );
 }

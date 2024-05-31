@@ -5,4 +5,41 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+
+  @media screen and (max-width: 800px) {
+    position: fixed;
+    width: 50vw;
+    background-color: $white;
+    right: -100%;
+    z-index: 1;
+    height: 100vh;
+    padding: 10vh 1vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    top: 0;
+    transition: 0.3s;
+    border-left: 2px solid $buttons-color;
+
+    &.dark {
+      background-color: $dark-theme;
+      border-left: 2px solid $dark-buttons-color;
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    width: 60vw;
+  }
+
+  @media screen and (max-width: 460px) {
+    width: 80vw;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 100vw;
+  }
+
+  &.active {
+    right: 0;
+  }
 }

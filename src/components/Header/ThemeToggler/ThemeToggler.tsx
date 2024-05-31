@@ -4,7 +4,7 @@ import { themeSlice } from '@/store/reducers/ThemeReducer';
 
 import * as styles from './ThemeToggler.module.scss';
 
-function ThemeToggler() {
+function ThemeToggler({ isActive }: { isActive: boolean }) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
   const { changeTheme } = themeSlice.actions;
   const dispatch = useAppDispatch();
@@ -19,7 +19,9 @@ function ThemeToggler() {
 
   return (
     <button
-      className={`${styles.toggler__wrapper} ${styles[theme]}`}
+      className={`${styles.toggler__wrapper} ${styles[theme]} ${
+        isActive && styles.active
+      }`}
       onClick={onClick}
     >
       <div className={`${styles.toggler__bar} ${styles[theme]}`} />

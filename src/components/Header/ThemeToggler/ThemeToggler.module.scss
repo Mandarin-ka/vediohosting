@@ -8,11 +8,39 @@
   position: relative;
   overflow: hidden;
   background-color: $white;
-  transition: 0.2s;
+  transition: 0.3s;
 
   &.dark {
     background-color: $buttons-color;
     border-color: $dark-buttons-color;
+  }
+
+  @media screen and (max-width: 800px) {
+    position: fixed;
+    right: -109%;
+    z-index: 2;
+
+    &.active {
+      right: calc(50vw - 70px);
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    &.active {
+      right: calc(60vw - 70px);
+    }
+  }
+
+  @media screen and (max-width: 460px) {
+    &.active {
+      right: calc(80vw - 70px);
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    &.active {
+      right: calc(100vw - 70px);
+    }
   }
 }
 
