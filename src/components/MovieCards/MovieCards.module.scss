@@ -3,10 +3,16 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-}
 
-.cards > * {
-  margin: 2%;
+  & > * {
+    margin: 2%;
+  }
+
+  @media screen and (max-width: 650px) {
+    & > * {
+      margin: 15px 0;
+    }
+  }
 }
 
 .error {

@@ -13,6 +13,10 @@
   margin-top: 13px;
   align-items: flex-start;
   max-width: 300px;
+
+  @media screen and (max-width: 650px) {
+    margin-top: 5px;
+  }
 }
 
 .thumbnail {
