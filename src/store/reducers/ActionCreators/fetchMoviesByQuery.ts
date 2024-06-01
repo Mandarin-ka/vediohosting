@@ -1,31 +1,40 @@
-import axios from 'axios';
-
 import { movieSlice } from '../MovieReducer';
 import { AppDispatch } from '@/store/store';
 import { ResponseKiniopoisk } from '@/types/movies';
+import axiosInstance from '@/utils/axios/axiosWithCache';
 
 export function fetchMoviesByQuery(
+  query: string,
   page?: number,
-  query?: string,
   isNewPage?: boolean,
   genre?: string
 ) {
   return async (dispatch: AppDispatch) => {
     const url = 'https://api.kinopoisk.dev/v1.4/movie';
 
+    console.log(query);
+
     try {
       dispatch(movieSlice.actions.movieFetching());
-      const responseIds = await axios.get<ResponseKiniopoisk>(`${url}/search`, {
-        headers: { 'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7' },
-        params: { limit: 16, page: page || 1, query: query },
-        paramsSerializer: { indexes: null },
-      });
+
+      const responseIds = await axiosInstance.get<ResponseKiniopoisk>(
+        `${url}/search`,
+        {
+          headers: {
+            'X-API-KEY': process.env.X_API_KEY,
+            'Content-Type': 'text/html; charset=utf-8',
+          },
+          params: { limit: 16, page: page || 1, query: query },
+          paramsSerializer: { indexes: null },
+        }
+      );
 
       const ids = responseIds.data.docs.map((e) => e.id);
 
-      const response = await axios.get<ResponseKiniopoisk>(url, {
+      const response = await axiosInstance.get<ResponseKiniopoisk>(url, {
         headers: {
-          'X-API-KEY': 'VK03T2G-SSR406Z-N5FFKM9-1JWHZF7',
+          'X-API-KEY': process.env.X_API_KEY,
+          'Content-Type': 'text/html; charset=utf-8',
         },
         params: {
           limit: 16,
@@ -44,6 +53,8 @@ export function fetchMoviesByQuery(
         },
         paramsSerializer: { indexes: null },
       });
+
+      console.log(response);
 
       if (isNewPage)
         dispatch(

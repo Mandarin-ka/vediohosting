@@ -1,18 +1,56 @@
 .search__wrapper {
   width: 45%;
   display: flex;
+  border: 2px solid $border-color;
+
+  &.dark {
+    border: 2px solid $dark-buttons-color;
+
+    .input {
+      background-color: $blackout;
+      color: $dark-text-color;
+
+      &::placeholder {
+        color: $dark-placeholder-color;
+      }
+    }
+
+    .button {
+      background-color: $blackout;
+      border-color: $dark-buttons-color;
+    }
+
+    .loupe {
+      border: 2px solid $dark-text-color;
+
+      &::after {
+        background-color: $dark-text-color;
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    align-self: center;
+    width: 100%;
+    margin-top: 20px;
+  }
 }
 
 .input {
-  width: 92%;
-  border: 1px solid $border-color;
+  border: 0;
+  width: calc(100% - 60px);
   color: black;
   box-sizing: border-box;
   padding: 7px 15px;
   font-size: 20px;
+  outline: 0;
 
   &::placeholder {
     color: $border-color;
+  }
+
+  &:active {
+    outline: 0;
   }
 
   &:focus {
@@ -21,13 +59,19 @@
 }
 
 .button {
+  width: 60px;
   padding: 10px 20px;
   box-sizing: border-box;
-  border: 1px solid $border-color;
-  border-left: 0;
+  border: 0;
+  border-left: 2px solid $border-color;
+  z-index: 1;
   position: relative;
   cursor: pointer;
   background-color: white;
+
+  @media screen and (max-width: 480px) {
+    padding: 7px 15px;
+  }
 
   .loupe {
     border: 2px solid $border-color;
@@ -37,6 +81,10 @@
     position: relative;
     top: -3px;
     left: -7px;
+
+    @media screen and (max-width: 480px) {
+      left: -4px;
+    }
 
     &::after {
       content: '';

@@ -1,9 +1,9 @@
 import { links } from './links';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import Facebook from '@assets/icons/links/fb.svg';
 import Inst from '@assets/icons/links/inst.svg';
 import Linkedin from '@assets/icons/links/linkedin.svg';
 import Twitter from '@assets/icons/links/twitter.svg';
+import { useAppSelector } from '@hooks/redux/useAppSelector';
 
 import * as styles from './Footer.module.scss';
 
@@ -11,7 +11,10 @@ function Footer() {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   return (
-    <footer className={`${styles.footer} ${styles[theme]}`}>
+    <footer
+      className={`${styles.footer} ${styles[theme]}`}
+      data-testid='footer'
+    >
       <div className={styles.wrapper}>
         <div className={styles.docs}>
           <div className={styles.refs}>

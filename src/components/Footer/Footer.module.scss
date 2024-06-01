@@ -8,6 +8,10 @@
   &.dark {
     border-color: $dark-footer-line-color;
   }
+
+  @media screen and (max-width: 780px) {
+    padding: 54px 0 110px;
+  }
 }
 
 .wrapper {
@@ -21,6 +25,14 @@
   justify-content: space-between;
   max-width: 144px;
   width: 100%;
+
+  @media screen and (max-width: 780px) {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }
 
 .license {
@@ -37,25 +49,56 @@
   &.dark {
     color: $dark-license-text-color;
   }
+
+  @media screen and (max-width: 520px) {
+    font-size: 1.25rem;
+  }
 }
 
 .docs {
   display: flex;
+
+  @media screen and (max-width: 780px) {
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+  }
 }
 
 .refs {
   display: flex;
   flex-wrap: wrap;
   max-width: 293px;
+
+  @media screen and (max-width: 780px) {
+    &:first-child {
+      justify-content: flex-end;
+    }
+    margin: 0 10px;
+    font-size: 1rem;
+
+    & > * {
+      text-align: right;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    font-size: 0.88rem;
+    margin: 0 2px;
+  }
 }
 
 .ref {
   width: fit-content;
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: 600;
   margin: 3px 5px;
   position: relative;
   overflow: hidden;
+
+  @media screen and (max-width: 520px) {
+    margin: 0 3px;
+  }
 
   &::after {
     content: '';

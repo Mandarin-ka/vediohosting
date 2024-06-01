@@ -1,8 +1,8 @@
 .modal {
-  width: 50vw;
+  width: 70vw;
   min-width: 300px;
-  max-height: 60%;
-  height: 30vw;
+  min-height: 240px;
+  height: 40vw;
   box-sizing: border-box;
   border-radius: 10px;
   background-color: $white;
@@ -12,6 +12,15 @@
   right: 0;
   bottom: 0;
   margin: auto;
+
+  @media screen and (max-width: 720px) {
+    width: 80vw;
+    height: 45vw;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 20vw;
+  }
 }
 
 .blackout {
@@ -34,6 +43,11 @@
   width: 40px;
   height: 40px;
   transition: 0.1s;
+
+  @media screen and (max-width: 720px) {
+    right: 0;
+    top: -50px;
+  }
 }
 
 .close:hover {

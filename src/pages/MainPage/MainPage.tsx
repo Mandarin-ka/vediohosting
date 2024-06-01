@@ -16,27 +16,42 @@ function MainPage() {
   const [isLoadingNewPage, setIsLoadingNewPage] = useState<boolean>(false);
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
+  const [isBurgerActive, setIsBurgerActive] = useState(false);
+
+  const onBurgerClick = useCallback(() => {
+    setIsBurgerActive((prevValue) => !prevValue);
+  }, []);
+
   const loadNewPage = useCallback(() => {
     setIsLoadingNewPage(true);
     setPage((prevValue) => prevValue + 1);
   }, []);
 
   return (
-    <div className={`App ${theme}`}>
-      <main>
-        <Header setQuery={setQuery} />
-        <ControlPanel genre={genre} setGenre={setGenre} />
+    <div className={`App ${theme} ${isBurgerActive && 'bodyblock'}`}>
+      <Header
+        setQuery={setQuery}
+        query={query}
+        isBurger={isBurgerActive}
+        toggleBurger={onBurgerClick}
+      />
+      <ControlPanel
+        genre={genre}
+        setGenre={setGenre}
+        setQuery={setQuery}
+        isActive={isBurgerActive}
+        resetActive={onBurgerClick}
+      />
 
-        <MovieCards
-          query={query}
-          genre={genre}
-          page={page}
-          isLoadingNewPage={isLoadingNewPage}
-          setIsLoadingNewPage={setIsLoadingNewPage}
-          setPage={setPage}
-        />
-        <Button text='Load More' onClick={loadNewPage} />
-      </main>
+      <MovieCards
+        query={query}
+        genre={genre}
+        page={page}
+        isLoadingNewPage={isLoadingNewPage}
+        setIsLoadingNewPage={setIsLoadingNewPage}
+        setPage={setPage}
+      />
+      <Button text='Load More' onClick={loadNewPage} />
       <Footer />
     </div>
   );
