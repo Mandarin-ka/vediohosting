@@ -29,31 +29,29 @@ function MainPage() {
 
   return (
     <div className={`App ${theme} ${isBurgerActive && 'bodyblock'}`}>
-      <main>
-        <Header
-          setQuery={setQuery}
-          query={query}
-          isBurger={isBurgerActive}
-          toggleBurger={onBurgerClick}
-        />
-        <ControlPanel
-          genre={genre}
-          setGenre={setGenre}
-          setQuery={setQuery}
-          isActive={isBurgerActive}
-          resetActive={onBurgerClick}
-        />
+      <Header
+        setQuery={setQuery}
+        query={query}
+        isBurger={isBurgerActive}
+        toggleBurger={onBurgerClick}
+      />
+      <ControlPanel
+        genre={genre}
+        setGenre={setGenre}
+        setQuery={setQuery}
+        isActive={isBurgerActive}
+        resetActive={onBurgerClick}
+      />
 
-        <MovieCards
-          query={query}
-          genre={genre}
-          page={page}
-          isLoadingNewPage={isLoadingNewPage}
-          setIsLoadingNewPage={setIsLoadingNewPage}
-          setPage={setPage}
-        />
-        <Button text='Load More' onClick={loadNewPage} />
-      </main>
+      <MovieCards
+        query={query}
+        genre={genre}
+        page={page}
+        isLoadingNewPage={isLoadingNewPage}
+        setIsLoadingNewPage={setIsLoadingNewPage}
+        setPage={setPage}
+      />
+      <Button text='Load More' onClick={loadNewPage} />
       <Footer />
     </div>
   );
