@@ -27,7 +27,9 @@ function MovieCards({
   setIsLoadingNewPage,
 }: Props) {
   const dispatch = useAppDispatch();
-  const { isLoading, movies } = useAppSelector((state) => state.MoviesReducer);
+  const { isLoading, movies, error } = useAppSelector(
+    (state) => state.MoviesReducer
+  );
 
   useEffect(() => {
     if (query) {
@@ -43,7 +45,7 @@ function MovieCards({
     }
   }, [page, genre, query]);
 
-  if (movies)
+  if (movies.length)
     return (
       <div className={styles.cards}>
         {movies.map((movie: Movie, index: number) => (
@@ -56,7 +58,7 @@ function MovieCards({
       </div>
     );
 
-  return <h1>Ничего не найдено</h1>;
+  return <h1>Произошла ошибка {error}. Попробуйте позже.</h1>;
 }
 
 export default MovieCards;
