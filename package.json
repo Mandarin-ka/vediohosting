@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env production --env VERCEL_ENV=$VERCEL_ENV",
+    "build:prod": "webpack --env mode=development --env VERCEL_ENV=$VERCEL_ENV",
     "start": "webpack serve --open",
     "test": "jest"
   },
