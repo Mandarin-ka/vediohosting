@@ -45,7 +45,7 @@ function MovieCards({
     }
   }, [page, genre, query]);
 
-  if (movies.length)
+  if (movies.length || isLoading)
     return (
       <div className={styles.cards}>
         {movies.map((movie: Movie, index: number) => (
@@ -58,7 +58,7 @@ function MovieCards({
       </div>
     );
 
-  return <h1>Произошла ошибка {error}. Попробуйте позже.</h1>;
+  return <h1 className={styles.error}>Произошла {error}. Попробуйте позже.</h1>;
 }
 
 export default MovieCards;

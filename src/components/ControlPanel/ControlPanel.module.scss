@@ -3,8 +3,8 @@
   width: 90%;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  margin: auto;
+  justify-content: space-evenly;
+  margin: 0 auto;
 
   @media screen and (max-width: 800px) {
     position: fixed;
