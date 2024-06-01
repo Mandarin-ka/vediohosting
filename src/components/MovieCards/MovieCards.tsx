@@ -7,7 +7,7 @@ import { fetchMoviesByGenre } from '@/store/reducers/ActionCreators/fetchMoviesB
 import { fetchMoviesByQuery } from '@/store/reducers/ActionCreators/fetchMoviesByQuery';
 import { Movie } from '@/types/movies';
 
-import * as styles from './MovieCards.module.scss';
+import styles from './MovieCards.module.scss';
 
 interface Props {
   query: string;

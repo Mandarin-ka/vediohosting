@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
-import * as styles from './SearchBar.module.scss';
+import styles from './SearchBar.module.scss';
 
 function SearchBar(props: {
   placeholder?: string;
@@ -27,7 +27,7 @@ function SearchBar(props: {
   };
 
   return (
-    <div className={`${styles.search__wrapper} ${styles[theme]}`}>
+    <div className={`${styles.wrapper} ${styles[theme]}`}>
       <input
         type='text'
         className={styles.input}

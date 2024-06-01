@@ -1,11 +1,11 @@
 import { links } from './links';
-import Facebook from '@assets/icons/links/fb.svg';
-import Inst from '@assets/icons/links/inst.svg';
-import Linkedin from '@assets/icons/links/linkedin.svg';
-import Twitter from '@assets/icons/links/twitter.svg';
-import { useAppSelector } from '@hooks/redux/useAppSelector';
+import Facebook from '@/assets/icons/links/fb.svg';
+import Inst from '@/assets/icons/links/inst.svg';
+import Linkedin from '@/assets/icons/links/linkedin.svg';
+import Twitter from '@/assets/icons/links/twitter.svg';
+import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
-import * as styles from './Footer.module.scss';
+import styles from './Footer.module.scss';
 
 function Footer() {
   const { theme } = useAppSelector((state) => state.ThemeReducer);

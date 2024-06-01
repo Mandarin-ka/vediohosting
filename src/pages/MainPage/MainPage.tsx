@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
 
+import ControlPanel from '@/components/ControlPanel/ControlPanel';
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
+import MovieCards from '@/components/MovieCards/MovieCards';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
-import ControlPanel from '@components/ControlPanel/ControlPanel';
-import Footer from '@components/Footer/Footer';
-import Header from '@components/Header/Header';
-import MovieCards from '@components/MovieCards/MovieCards';
-import Button from '@ui/Buttons/PaginationButton/PaginationButton';
+import Button from '@/ui/Buttons/PaginationButton/PaginationButton';
 
 import './MainPage.scss';
 

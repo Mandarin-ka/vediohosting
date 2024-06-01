@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "outDir": "./bundle/",
     "types": ["@testing-library/jest-dom"],
+    "resolveJsonModule": true,
     "noImplicitAny": true, //change
     "module": "ESNext",
     "target": "es5",
@@ -11,16 +12,9 @@
     "allowJs": true,
     "moduleResolution": "node",
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@API/*": ["./src/API/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@components/*": ["./src/components/*"],
-      "@store/*": ["./src/store/*"],
-      "@ui/*": ["./src/ui/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@/*": ["./*"]
     }
   },
 

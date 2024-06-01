@@ -8,7 +8,7 @@ import { AxiosResponseGenre } from '@/types/axiosResponse';
 import { Genre } from '@/types/genres';
 import GenreButton from '@/ui/Buttons/GenreButton/GenreButton';
 
-import * as styles from './ControlPanel.module.scss';
+import styles from './ControlPanel.module.scss';
 
 function ControlPanel({
   isActive,

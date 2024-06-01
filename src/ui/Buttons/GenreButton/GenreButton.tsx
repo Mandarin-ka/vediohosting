@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
-import * as styles from './GenreButton.module.scss';
+import styles from './GenreButton.module.scss';
 
 function GenreButton({
   text,

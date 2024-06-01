@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
-import * as styles from './PaginationButton.module.scss';
+import styles from './PaginationButton.module.scss';
 
 function PaginationButton({
   text,

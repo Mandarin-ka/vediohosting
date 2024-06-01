@@ -6,9 +6,9 @@ import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
 import Skeleton from '@/ui/Skeleton/Skeleton';
-import { getOneDirector } from '@utils/cards/getDirector';
+import { getOneDirector } from '@/utils/cards/getDirector';
 
-import * as styles from './MovieCard.module.scss';
+import styles from './MovieCard.module.scss';
 
 function MovieCard({ movie }: { movie: Movie }) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
@@ -37,7 +37,7 @@ function MovieCard({ movie }: { movie: Movie }) {
           alt=''
           className={styles.poster}
         />
-        <div className={styles.info__wrapper}>
+        <div className={styles.wrapper}>
           <img
             src={getOneDirector(movie)?.photo}
             alt=''
@@ -47,7 +47,7 @@ function MovieCard({ movie }: { movie: Movie }) {
             <h2 className={`${styles.title} ${styles[theme]}`}>
               {movie.name || ' '}
             </h2>
-            <div className={styles.bottom__info}>
+            <div className={styles.bottom}>
               <h3 className={`${styles.director} ${styles[theme]}`}>
                 {getOneDirector(movie)?.name || 'Неизвестен'}
               </h3>

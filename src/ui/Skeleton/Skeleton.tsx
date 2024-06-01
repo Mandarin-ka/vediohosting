@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
-import * as styles from './Skeleton.module.scss';
+import styles from './Skeleton.module.scss';
 
 function Skeleton() {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
@@ -8,14 +8,14 @@ function Skeleton() {
   return (
     <div>
       <div className={`${styles.card} ${styles[theme]}`}>
-        <div className={`${styles.poster__stub} ${styles[theme]}`} />
-        <div className={styles.info__wrapper__stub}>
-          <div className={`${styles.thumbnail__stub} ${styles[theme]}`} />
-          <div className={styles.info__stub}>
-            <div className={`${styles.title__stub} ${styles[theme]}`} />
-            <div className={styles.bottom__info__stub}>
-              <div className={`${styles.director__stub}  ${styles[theme]}`} />
-              <div className={`${styles.year__stub} ${styles[theme]}`} />
+        <div className={`${styles.poster} ${styles[theme]}`} />
+        <div className={styles.wrapper}>
+          <div className={`${styles.thumbnail} ${styles[theme]}`} />
+          <div className={styles.info}>
+            <div className={`${styles.title} ${styles[theme]}`} />
+            <div className={styles.bottom}>
+              <div className={`${styles.director}  ${styles[theme]}`} />
+              <div className={`${styles.year} ${styles[theme]}`} />
             </div>
           </div>
         </div>

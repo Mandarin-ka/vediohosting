@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 
 import { ClickEventType } from '@/types/clickEventType';
 
-import * as styles from './Modal.module.scss';
+import styles from './Modal.module.scss';
 
 const modalRoot = document.getElementById('modal');
 

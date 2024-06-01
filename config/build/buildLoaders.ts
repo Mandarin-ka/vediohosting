@@ -8,10 +8,12 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   const cssLoadersWithModules = {
     loader: 'css-loader',
     options: {
+      esModule: true,
       modules: {
+        namedExport: false,
         auto: true,
         localIdentName: isDev
-          ? '[path][name]__[local]_[hash:base64:8]'
+          ? '[path][name]_[hash:base64:8]'
           : '[hash:base64:8]',
       },
     },
@@ -41,12 +43,6 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
   };
-
-  // const tsLoader = {
-  //   test: /\.tsx?$/,
-  //   use: 'ts-loader',
-  //   exclude: /node_modules/,
-  // };
 
   const babelLoader = {
     test: /\.tsx?$/,

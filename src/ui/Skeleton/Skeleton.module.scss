@@ -39,47 +39,47 @@
   }
 }
 
-.poster__stub {
+.poster {
   max-width: 100%;
   height: 450px;
 }
 
-.info__wrapper__stub {
+.wrapper {
   display: flex;
   margin-top: 20px;
   align-items: flex-start;
 }
 
-.thumbnail__stub {
+.thumbnail {
   width: 36px;
   height: 50px;
   border-radius: 15%;
 }
 
-.bottom__info__stub {
+.bottom {
   display: flex;
   margin-top: 10px;
   justify-content: space-between;
 }
 
-.info__stub {
+.info {
   margin-left: 12px;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.title__stub {
+.title {
   width: 100%;
   height: 12px;
 }
 
-.director__stub {
+.director {
   width: 50%;
   height: 12px;
 }
 
-.year__stub {
+.year {
   width: 30%;
   margin-left: 30px;
   position: relative;
@@ -95,25 +95,25 @@
   }
 }
 
-.poster__stub,
-.title__stub,
-.thumbnail__stub,
-.director__stub,
-.year__stub,
-.year__stub::before {
+.poster,
+.title,
+.thumbnail,
+.director,
+.year,
+.year::before {
   border-radius: 10px;
   background-color: $stub-color;
 }
 
-.poster__stub.dark,
-.title__stub.dark,
-.thumbnail__stub.dark,
-.director__stub.dark,
-.year__stub.dark,
-.year__stub.dark::before {
+.poster.dark,
+.title.dark,
+.thumbnail.dark,
+.director.dark,
+.year.dark,
+.year.dark::before {
   background-color: $dark-stub-color;
 }
 
-.poster__stub {
+.poster {
   border-radius: 0;
 }

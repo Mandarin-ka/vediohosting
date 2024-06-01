@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 
-import * as styles from './Burger.module.scss';
+import styles from './Burger.module.scss';
 
 function Burger({
   isActive,
