@@ -20,6 +20,7 @@ export function buildPlugins({
     new MiniCssExtractPlugin(),
     new Dotenv({
       path: dotenvFilename,
+      systemvars: true,
     }),
   ];
 
