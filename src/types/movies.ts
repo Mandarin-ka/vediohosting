@@ -8,7 +8,7 @@ export interface ResponseKiniopoisk {
 
 export interface Movie {
   id: number;
-  names: Name[];
+  names?: Name[];
   year: number;
   poster: Poster;
   persons: Persons[];

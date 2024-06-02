@@ -12,6 +12,20 @@
   right: 0;
   bottom: 0;
   margin: auto;
+  transition: 2s;
+
+  @keyframes scale {
+    from {
+      transform: scale(0, 0);
+    }
+    to {
+      transform: scale(1, 1);
+    }
+  }
+
+  &.active {
+    animation: scale 0.2s linear;
+  }
 
   @media screen and (max-width: 720px) {
     width: 80vw;

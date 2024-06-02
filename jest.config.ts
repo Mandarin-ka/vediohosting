@@ -8,7 +8,10 @@ const config: Config = {
     '\\.(css|less|scss|sss|style)$': 'ts-jest',
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
-  transformIgnorePatterns: ['node_modules/(?!variables/.*)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!variables/.*)',
+    '/node_modules/(?!(axios)/)',
+  ],
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
     '@/(.*)': '<rootDir>/src/$1',

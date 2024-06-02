@@ -1,22 +1,14 @@
 import { useEffect } from 'react';
 
+import { CardsProps } from './config';
 import MovieCard from './MovieCard/MovieCard';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
-import { fetchMoviesByGenre } from '@/store/reducers/ActionCreators/fetchMoviesByGenre';
-import { fetchMoviesByQuery } from '@/store/reducers/ActionCreators/fetchMoviesByQuery';
+import { createGenreAction } from '@/store/reducers/ActionCreators/fetchMoviesByGenre';
+import { createQueryAction } from '@/store/reducers/ActionCreators/fetchMoviesByQuery';
 import { Movie } from '@/types/movies';
 
 import styles from './MovieCards.module.scss';
-
-interface Props {
-  query: string;
-  genre: string;
-  page: number;
-  setPage: (page: number) => void;
-  isLoadingNewPage: boolean;
-  setIsLoadingNewPage: (elem: boolean) => void;
-}
 
 function MovieCards({
   query,
@@ -25,7 +17,7 @@ function MovieCards({
   setPage,
   isLoadingNewPage,
   setIsLoadingNewPage,
-}: Props) {
+}: CardsProps) {
   const dispatch = useAppDispatch();
   const { isLoading, movies, error } = useAppSelector(
     (state) => state.MoviesReducer
@@ -33,21 +25,18 @@ function MovieCards({
 
   useEffect(() => {
     if (query) {
-      dispatch(fetchMoviesByQuery(query, page, isLoadingNewPage, genre));
+      dispatch(createQueryAction(query, page, isLoadingNewPage, genre));
     } else {
-      dispatch(fetchMoviesByGenre(page, genre, isLoadingNewPage));
+      dispatch(createGenreAction(page, genre, isLoadingNewPage));
     }
 
-    if (isLoadingNewPage) {
-      setIsLoadingNewPage(false);
-    } else {
-      setPage(1);
-    }
+    if (isLoadingNewPage) setIsLoadingNewPage(false);
+    else setPage(1);
   }, [page, genre, query]);
 
   if (movies.length || isLoading)
     return (
-      <div className={styles.cards}>
+      <div className={styles.cards} data-testid='cards'>
         {movies.map((movie: Movie, index: number) => (
           <MovieCard movie={movie} key={movie?.id || index} />
         ))}

@@ -10,7 +10,7 @@ import { getOneDirector } from '@/utils/cards/getDirector';
 
 import styles from './MovieCard.module.scss';
 
-function MovieCard({ movie }: { movie: Movie }) {
+function MovieCard({ movie }: { movie?: Movie }) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +28,7 @@ function MovieCard({ movie }: { movie: Movie }) {
         </Modal>
       )}
 
-      <div className={styles.card} onClick={openModal}>
+      <div className={styles.card} onClick={openModal} data-testid='card'>
         <img
           src={
             movie.poster?.previewUrl ||

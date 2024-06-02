@@ -16,8 +16,9 @@ function Burger({
     <button
       className={`${styles.burger} ${styles[className]} ${styles[theme]}`}
       onClick={onClick}
+      data-testid='burger'
     >
-      <div className={styles.line}></div>
+      <div className={styles.line} />
     </button>
   );
 }

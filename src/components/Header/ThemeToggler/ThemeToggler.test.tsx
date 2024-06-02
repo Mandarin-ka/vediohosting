@@ -1,5 +1,5 @@
-import { renderWithStore } from '@/tests/helpers/ReduxHelper';
 import ThemeToggler from './ThemeToggler';
+import { renderWithStore } from '@/tests/helpers/ReduxHelper';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
@@ -9,9 +9,8 @@ describe('Render toggler', () => {
 
     const toggler = screen.getByTestId('toggler');
 
-    expect(toggler).toBeInTheDocument();
     expect(toggler).toHaveClass('light');
     await userEvent.click(toggler);
-    expect(toggler).toHaveClass('light');
+    expect(toggler).toHaveClass('dark');
   });
 });

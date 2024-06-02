@@ -1,7 +1,7 @@
 import { AxiosResponseGenre } from '@/types/axiosResponse';
 import axiosInstance from '@/utils/axios/axiosWithCache';
 
-export const getKinopoiskGenres = async (): Promise<AxiosResponseGenre> => {
+export const getGenres = async (): Promise<AxiosResponseGenre> => {
   try {
     const url = 'https://api.kinopoisk.dev/v1/movie/possible-values-by-field';
     const params = { field: 'genres.name' };

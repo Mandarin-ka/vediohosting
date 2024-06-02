@@ -21,8 +21,8 @@ function Header({
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <div className={`${styles.logo} ${styles[theme]}`}>
-          <div className={styles.triangle}></div>
+        <div className={`${styles.logo} ${styles[theme]}`} data-testid='logo'>
+          <div className={styles.triangle} />
         </div>
         <h1 className={`${styles.title} ${styles[theme]}`}>ModsenFilms</h1>
       </div>

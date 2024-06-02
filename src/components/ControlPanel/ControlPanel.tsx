@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { getKinopoiskGenres } from '@/API/kinopoisk/getKinopoiskGenres';
+import { configValue } from './config';
+import { getGenres } from '@/API/kinopoisk/getGenres';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { movieSlice } from '@/store/reducers/MovieReducer';
@@ -29,15 +30,14 @@ function ControlPanel({
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   useEffect(() => {
-    getKinopoiskGenres().then((response: AxiosResponseGenre) => {
+    getGenres().then((response: AxiosResponseGenre) => {
       setGenres(response.data);
     });
   }, []);
 
   const toggleGenre = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    const value = (e.target as HTMLElement).textContent;
-    setGenre(value.toLowerCase() === 'все' ? '' : value);
+    const value = configValue(e);
+    setGenre(value);
     dispatch(movieFetchingSuccess([]));
     setQuery('');
     resetActive();
