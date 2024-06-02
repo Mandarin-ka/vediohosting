@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { getGenres } from '../getGenres';
+import { fetchGenres } from '../fetchGenres';
 import { genresMock } from '@/tests/mocks/genres';
 
 jest.mock('axios');
@@ -18,7 +18,7 @@ describe('Request to kinopoisk', () => {
 
   test('Axios called and return value', async () => {
     (axios.get as jest.Mock).mockReturnValue(response);
-    const genres = await getGenres();
+    const genres = await fetchGenres();
 
     expect(axios.get).toHaveBeenCalled();
 

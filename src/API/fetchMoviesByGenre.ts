@@ -1,12 +1,8 @@
-import { headers, selectFields } from './config';
+import { baseUrl, cacheTime, headers, selectFields } from '@/constants/apiConfig';
 import { ResponseKiniopoisk } from '@/types/movies';
 import axiosInstance from '@/utils/axios/axiosWithCache';
 
-export const fetchMoviesByGenre = async (
-  page?: number,
-  genre?: string
-): Promise<ResponseKiniopoisk> => {
-  const url = 'https://api.kinopoisk.dev/v1.4/movie';
+export const fetchMoviesByGenre = async (page?: number, genre?: string): Promise<ResponseKiniopoisk> => {
   const params = {
     limit: 16,
     page: page || 1,
@@ -18,11 +14,11 @@ export const fetchMoviesByGenre = async (
   };
 
   try {
-    const responseWithCache = await axiosInstance.get(url, {
+    const responseWithCache = await axiosInstance.get(baseUrl, {
       headers,
       params: { ...params },
       paramsSerializer: { indexes: null },
-      cache: { ttl: 60 * 1000 * 5 },
+      cache: { ttl: cacheTime },
     });
 
     return responseWithCache.data;

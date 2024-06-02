@@ -1,15 +1,16 @@
+import { act } from 'react';
+
 import MovieCards from './MovieCards';
+import { fetchMoviesByGenre } from '@/API/fetchMoviesByGenre';
 import { renderWithStore } from '@/tests/helpers/ReduxHelper';
-import { render, screen, waitFor } from '@testing-library/react';
 import { cardsMock } from '@/tests/mocks/cards';
 import { Movie } from '@/types/movies';
-import { act } from 'react';
-import { fetchMoviesByGenre } from '@/API/kinopoisk/fetchMoviesByGenre';
+import { render, screen, waitFor } from '@testing-library/react';
 
-jest.mock('./../../API/kinopoisk/fetchMoviesByGenre');
+jest.mock('./../../API/fetchMoviesByGenre');
 
 describe('Render Cards', () => {
-  let response: Movie[];
+  let response: { docs: Movie[] };
   beforeEach(() => {
     response = cardsMock;
   });
@@ -18,46 +19,38 @@ describe('Render Cards', () => {
     jest.clearAllMocks();
   });
 
-  test('Render skeleton cards', async () => {
+  test('Render empty array', async () => {
     await act(async () => {
+      (fetchMoviesByGenre as jest.Mock).mockResolvedValue({ docs: [] });
+
       render(
         renderWithStore(
-          <MovieCards
-            query=''
-            genre=''
-            page={1}
-            setPage={() => null}
-            isLoadingNewPage={false}
-            setIsLoadingNewPage={() => null}
-          />
+          <MovieCards query='' genre='' page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />
         )
       );
     });
 
-    expect(screen.getAllByTestId('skeleton')).toHaveLength(16);
+    await waitFor(() => {
+      expect(screen.queryAllByTestId('card').length).toBe(0);
+
+      expect(screen.queryByText('Ничего не найдено.')).toBeInTheDocument();
+    });
   });
 
   test('fetching cards', async () => {
     await act(async () => {
-      const mockValue = jest.fn();
-      await mockValue.mockResolvedValue(response);
+      (fetchMoviesByGenre as jest.Mock).mockResolvedValue(response);
 
       render(
         renderWithStore(
-          <MovieCards
-            query=''
-            genre=''
-            page={1}
-            setPage={() => null}
-            isLoadingNewPage={false}
-            setIsLoadingNewPage={() => null}
-          />
+          <MovieCards query='' genre='' page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />
         )
       );
     });
 
     await waitFor(() => {
       expect(fetchMoviesByGenre).toHaveBeenCalledTimes(1);
+      expect(screen.queryAllByTestId('card').length).toBeGreaterThan(0);
     });
   });
 });

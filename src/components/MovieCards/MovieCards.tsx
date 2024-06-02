@@ -4,34 +4,19 @@ import { CardsProps } from './config';
 import MovieCard from './MovieCard/MovieCard';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
-import { createGenreAction } from '@/store/reducers/ActionCreators/fetchMoviesByGenre';
-import { createQueryAction } from '@/store/reducers/ActionCreators/fetchMoviesByQuery';
+import { createGenreAction } from '@/store/actions/createGenreAction';
+import { createQueryAction } from '@/store/actions/createQueryAction';
 import { Movie } from '@/types/movies';
 
 import styles from './MovieCards.module.scss';
 
-function MovieCards({
-  query,
-  genre,
-  page,
-  setPage,
-  isLoadingNewPage,
-  setIsLoadingNewPage,
-}: CardsProps) {
+function MovieCards({ query, genre, page, setPage, isLoadingNewPage, setIsLoadingNewPage }: CardsProps) {
   const dispatch = useAppDispatch();
-  const { isLoading, movies, error } = useAppSelector(
-    (state) => state.MoviesReducer
-  );
+  const { isLoading, movies, error } = useAppSelector((state) => state.MoviesReducer);
 
   useEffect(() => {
-    if (query) {
-      dispatch(createQueryAction(query, page, isLoadingNewPage, genre));
-    } else {
-      dispatch(createGenreAction(page, genre, isLoadingNewPage));
-    }
-
-    if (isLoadingNewPage) setIsLoadingNewPage(false);
-    else setPage(1);
+    query ? dispatch(createQueryAction(query, page, isLoadingNewPage, genre)) : dispatch(createGenreAction(page, genre, isLoadingNewPage));
+    isLoadingNewPage ? setIsLoadingNewPage(false) : setPage(1);
   }, [page, genre, query]);
 
   if (movies.length || isLoading)
@@ -47,7 +32,8 @@ function MovieCards({
       </div>
     );
 
-  return <h1 className={styles.error}>Произошла {error}. Попробуйте позже.</h1>;
+  if (error) return <h1 className={styles.error}>Произошла {error}. Попробуйте позже.</h1>;
+  return <h1 className={styles.error}>Ничего не найдено.</h1>;
 }
 
 export default MovieCards;

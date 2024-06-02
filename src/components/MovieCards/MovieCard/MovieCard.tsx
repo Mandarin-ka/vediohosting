@@ -6,7 +6,7 @@ import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
 import Skeleton from '@/ui/Skeleton/Skeleton';
-import { getOneDirector } from '@/utils/cards/getDirector';
+import { getDirector } from '@/utils/cards/getDirector';
 
 import styles from './MovieCard.module.scss';
 
@@ -29,31 +29,14 @@ function MovieCard({ movie }: { movie?: Movie }) {
       )}
 
       <div className={styles.card} onClick={openModal} data-testid='card'>
-        <img
-          src={
-            movie.poster?.previewUrl ||
-            'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'
-          }
-          alt=''
-          className={styles.poster}
-        />
+        <img src={movie.poster?.previewUrl || 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'} alt='' className={styles.poster} />
         <div className={styles.wrapper}>
-          <img
-            src={getOneDirector(movie)?.photo}
-            alt=''
-            className={styles.thumbnail}
-          />
+          <img src={getDirector(movie)?.photo} alt='' className={styles.thumbnail} />
           <div className={styles.info}>
-            <h2 className={`${styles.title} ${styles[theme]}`}>
-              {movie.name || ' '}
-            </h2>
+            <h2 className={`${styles.title} ${styles[theme]}`}>{movie.name || ' '}</h2>
             <div className={styles.bottom}>
-              <h3 className={`${styles.director} ${styles[theme]}`}>
-                {getOneDirector(movie)?.name || 'Неизвестен'}
-              </h3>
-              <span className={`${styles.year} ${styles[theme]}`}>
-                {movie.year}
-              </span>
+              <h3 className={`${styles.director} ${styles[theme]}`}>{getDirector(movie)?.name || 'Неизвестен'}</h3>
+              <span className={`${styles.year} ${styles[theme]}`}>{movie.year}</span>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { configValue } from './config';
-import { getGenres } from '@/API/kinopoisk/getGenres';
+import { fetchGenres } from '@/API/fetchGenres';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { movieSlice } from '@/store/reducers/MovieReducer';
@@ -30,7 +30,7 @@ function ControlPanel({
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   useEffect(() => {
-    getGenres().then((response: AxiosResponseGenre) => {
+    fetchGenres().then((response: AxiosResponseGenre) => {
       setGenres(response.data);
     });
   }, []);
@@ -44,23 +44,10 @@ function ControlPanel({
   };
 
   return (
-    <div
-      className={`${styles.panel} ${isActive && styles.active} ${
-        styles[theme]
-      }`}
-    >
-      <GenreButton
-        text={'Все'}
-        onClick={toggleGenre}
-        className={genre === '' ? 'active' : ''}
-      />
+    <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`}>
+      <GenreButton text={'Все'} onClick={toggleGenre} className={genre === '' ? 'active' : ''} />
       {genres.map((e: Genre, i: number) => (
-        <GenreButton
-          key={e.name + i}
-          text={e.name}
-          onClick={toggleGenre}
-          className={genre === e.name ? 'active' : ''}
-        />
+        <GenreButton key={e.name + i} text={e.name} onClick={toggleGenre} className={genre === e.name ? 'active' : ''} />
       ))}
     </div>
   );
