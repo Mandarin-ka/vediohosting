@@ -1,16 +1,15 @@
 import { memo } from 'react';
 
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 import styles from './GenreButton.module.scss';
 
 function GenreButton({
   text,
   onClick,
-  value,
   className,
 }: {
-  value: string;
+  value?: string;
   text?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   className?: string;

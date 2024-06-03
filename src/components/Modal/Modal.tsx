@@ -29,12 +29,8 @@ function Modal({
 
   if (isActive) {
     element = (
-      <div className={styles.blackout} onClick={close} data-testid='blackout'>
-        <div
-          className={`${styles.modal} ${styles[className]}`}
-          data-testid='modal'
-          onClick={onModalClick}
-        >
+      <div className={styles.blackout} onClick={close} data-testid="blackout">
+        <div className={`${styles.modal} ${styles[className]}`} data-testid="modal" onClick={onModalClick}>
           <button className={styles.close} onClick={close}>
             <div className={styles.line} />
           </button>

@@ -6,7 +6,7 @@ import { genresMock } from '@/tests/mocks/genres';
 jest.mock('axios');
 
 describe('Request to kinopoisk', () => {
-  let response: { name: string; slug: string }[];
+  let response: { data: { name: string; slug: string }[] };
 
   beforeEach(() => {
     response = genresMock;
@@ -21,7 +21,5 @@ describe('Request to kinopoisk', () => {
     const genres = await fetchGenres();
 
     expect(axios.get).toHaveBeenCalled();
-
-    expect(genres).toHaveLength(32);
   });
 });

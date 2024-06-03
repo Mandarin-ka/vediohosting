@@ -5,23 +5,21 @@ import { BuildOptions } from './types/types';
 export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
   const isDev = options.mode === 'development';
 
-  const cssLoadersWithModules = {
-    loader: 'css-loader',
-    options: {
-      esModule: true,
-      modules: {
-        namedExport: false,
-        auto: true,
-        localIdentName: isDev ? '[path][name]_[hash:base64:8]' : '[hash:base64:8]',
-      },
-    },
-  };
-
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
       { loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader },
-      cssLoadersWithModules,
+      {
+        loader: 'css-loader',
+        options: {
+          esModule: true,
+          modules: {
+            namedExport: false,
+            auto: true,
+            localIdentName: isDev ? '[path][name]_[hash:base64:8]' : '[hash:base64:8]',
+          },
+        },
+      },
       'sass-loader',
       {
         loader: 'sass-resources-loader',

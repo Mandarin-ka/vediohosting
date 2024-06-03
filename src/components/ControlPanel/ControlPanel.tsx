@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { configValue } from './config';
-import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { movieSlice } from '@/store/reducers/MovieReducer';
-import GenreButton from '@/ui/Buttons/GenreButton/GenreButton';
+import GenreButton from './GenreButton/GenreButton';
 
 import styles from './ControlPanel.module.scss';
 import { Genre } from '@/store/reducers/GenresReducer';
@@ -26,7 +26,7 @@ function ControlPanel({
   const { movieFetchingSuccess } = movieSlice.actions;
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.ThemeReducer);
-  const { isLoading, genres, error } = useAppSelector((state) => state.GenresReducer);
+  const { genres, error } = useAppSelector((state) => state.GenresReducer);
 
   useEffect(() => {
     dispatch(createGenresAction());
@@ -44,15 +44,13 @@ function ControlPanel({
 
   return (
     <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`}>
-      {genres.length === 1 &&
-        Array(32)
-          .fill(null)
-          .map((_, i) => <GenreButton key={i} text={''} value={''} className='stub' />)}
-
-      {genres.length > 1 &&
-        genres.map((e: Genre, i: number) => (
-          <GenreButton key={i} text={e.label} value={e.value} onClick={toggleGenre} className={genre === e.value ? 'active' : ''} />
-        ))}
+      {genres.length <= 1
+        ? Array(32)
+            .fill(null)
+            .map((_, i) => <GenreButton key={i} className="stub" />)
+        : genres.map((e: Genre, i: number) => (
+            <GenreButton key={i} text={e.label} value={e.value} onClick={toggleGenre} className={genre === e.value ? 'active' : ''} />
+          ))}
     </div>
   );
 }

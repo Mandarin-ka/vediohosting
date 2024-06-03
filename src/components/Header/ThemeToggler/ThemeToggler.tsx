@@ -1,5 +1,5 @@
-import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { themeSlice } from '@/store/reducers/ThemeReducer';
 
 import styles from './ThemeToggler.module.scss';
@@ -18,13 +18,7 @@ function ThemeToggler({ isActive = false }: { isActive?: boolean }) {
   };
 
   return (
-    <button
-      className={`${styles.wrapper} ${styles[theme]} ${
-        isActive && styles.active
-      }`}
-      onClick={onClick}
-      data-testid='toggler'
-    >
+    <button className={`${styles.wrapper} ${styles[theme]} ${isActive && styles.active}`} onClick={onClick} data-testid="toggler">
       <div className={`${styles.bar} ${styles[theme]}`} />
       <div className={`${styles.toggler} ${styles[theme]}`} />
     </button>

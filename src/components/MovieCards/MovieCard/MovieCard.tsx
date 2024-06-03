@@ -2,10 +2,10 @@ import { memo, useState } from 'react';
 
 import Modal from '@/components/Modal/Modal';
 import Videoplayer from '@/components/Videoplayer/Videoplayer';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
-import Skeleton from '@/ui/Skeleton/Skeleton';
+import Skeleton from '@/components/MovieCards/MovieCard/Skeleton/Skeleton';
 import { getDirector } from '@/utils/getDirector';
 
 import styles from './MovieCard.module.scss';
@@ -28,10 +28,10 @@ function MovieCard({ movie }: { movie?: Movie }) {
         </Modal>
       )}
 
-      <div className={styles.card} onClick={openModal} data-testid='card'>
-        <img src={movie.poster?.previewUrl || 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'} alt='' className={styles.poster} />
+      <div className={styles.card} onClick={openModal} data-testid="card">
+        <img src={movie.poster?.previewUrl || 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'} alt="" className={styles.poster} />
         <div className={styles.wrapper}>
-          <img src={getDirector(movie)?.photo} alt='' className={styles.thumbnail} />
+          <img src={getDirector(movie)?.photo} alt="" className={styles.thumbnail} />
           <div className={styles.info}>
             <h2 className={`${styles.title} ${styles[theme]}`}>{movie.name || ' '}</h2>
             <div className={styles.bottom}>

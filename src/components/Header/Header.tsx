@@ -1,7 +1,7 @@
 import Burger from './Burger/Burger';
 import SearchBar from './SearchBar/SearchBar';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 import styles from './Header.module.scss';
 
@@ -21,7 +21,7 @@ function Header({
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <div className={`${styles.logo} ${styles[theme]}`} data-testid='logo'>
+        <div className={`${styles.logo} ${styles[theme]}`} data-testid="logo">
           <div className={styles.triangle} />
         </div>
         <h1 className={`${styles.title} ${styles[theme]}`}>ModsenFilms</h1>
