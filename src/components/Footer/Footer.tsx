@@ -1,8 +1,8 @@
+import { leftRefs, rightRefs } from '@/constants/footerLinks';
+import { socialLinks } from '@/constants/socialLinks/socialLinks';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
 import styles from './Footer.module.scss';
-import { leftRefs, rightRefs } from '@/constants/footerLinks';
-import { socialLinks } from '@/constants/socialLinks/socialLinks';
 
 function Footer() {
   const { theme } = useAppSelector((state) => state.ThemeReducer);

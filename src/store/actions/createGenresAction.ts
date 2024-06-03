@@ -1,7 +1,7 @@
-import { movieSlice } from '../reducers/MovieReducer';
-import { AppDispatch } from '@/store/store';
 import { genresSlice } from '../reducers/GenresReducer';
+import { movieSlice } from '../reducers/MovieReducer';
 import { fetchGenres } from '@/API/fetchGenres';
+import { AppDispatch } from '@/store/store';
 import { apiGenre } from '@/types/genres';
 import { mapGenres } from '@/utils/mapGenres';
 

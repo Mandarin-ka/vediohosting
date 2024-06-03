@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
+import GenresReducer from './reducers/GenresReducer';
 import MoviesReducer from './reducers/MovieReducer';
 import ThemeReducer from './reducers/ThemeReducer';
-import GenresReducer from './reducers/GenresReducer';
 import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({ ThemeReducer, MoviesReducer, GenresReducer });

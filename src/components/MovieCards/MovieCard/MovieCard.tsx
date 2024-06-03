@@ -1,11 +1,11 @@
 import { memo, useState } from 'react';
 
 import Modal from '@/components/Modal/Modal';
+import Skeleton from '@/components/MovieCards/MovieCard/Skeleton/Skeleton';
 import Videoplayer from '@/components/Videoplayer/Videoplayer';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
-import Skeleton from '@/components/MovieCards/MovieCard/Skeleton/Skeleton';
 import { getDirector } from '@/utils/getDirector';
 
 import styles from './MovieCard.module.scss';
