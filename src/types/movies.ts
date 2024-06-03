@@ -1,14 +1,6 @@
-export interface ResponseKiniopoisk {
-  docs: Movie[];
-  total: number;
-  limit: number;
-  page: number;
-  pages: number;
-}
-
 export interface Movie {
   id: number;
-  names: Name[];
+  names?: Name[];
   year: number;
   poster: Poster;
   persons: Persons[];

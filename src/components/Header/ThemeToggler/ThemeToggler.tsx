@@ -1,10 +1,10 @@
-import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { themeSlice } from '@/store/reducers/ThemeReducer';
 
-import * as styles from './ThemeToggler.module.scss';
+import styles from './ThemeToggler.module.scss';
 
-function ThemeToggler({ isActive }: { isActive: boolean }) {
+function ThemeToggler({ isActive = false }: { isActive?: boolean }) {
   const { theme } = useAppSelector((state) => state.ThemeReducer);
   const { changeTheme } = themeSlice.actions;
   const dispatch = useAppDispatch();
@@ -18,13 +18,8 @@ function ThemeToggler({ isActive }: { isActive: boolean }) {
   };
 
   return (
-    <button
-      className={`${styles.toggler__wrapper} ${styles[theme]} ${
-        isActive && styles.active
-      }`}
-      onClick={onClick}
-    >
-      <div className={`${styles.toggler__bar} ${styles[theme]}`} />
+    <button className={`${styles.wrapper} ${styles[theme]} ${isActive && styles.active}`} onClick={onClick} data-testid="toggler">
+      <div className={`${styles.bar} ${styles[theme]}`} />
       <div className={`${styles.toggler} ${styles[theme]}`} />
     </button>
   );

@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 
 import MoviesReducer from './reducers/MovieReducer';
 import ThemeReducer from './reducers/ThemeReducer';
+import GenresReducer from './reducers/GenresReducer';
 import { configureStore } from '@reduxjs/toolkit';
 
-const rootReducer = combineReducers({ ThemeReducer, MoviesReducer });
+const rootReducer = combineReducers({ ThemeReducer, MoviesReducer, GenresReducer });
 
 export const setupStore = () => {
   return configureStore({ reducer: rootReducer });

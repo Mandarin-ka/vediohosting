@@ -1,14 +1,10 @@
 import { useState } from 'react';
 
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
-import * as styles from './SearchBar.module.scss';
+import styles from './SearchBar.module.scss';
 
-function SearchBar(props: {
-  placeholder?: string;
-  query: string;
-  setQuery: (q: string) => void;
-}) {
+function SearchBar(props: { placeholder?: string; query: string; setQuery: (q: string) => void }) {
   const [value, setValue] = useState(props.query);
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
@@ -27,16 +23,17 @@ function SearchBar(props: {
   };
 
   return (
-    <div className={`${styles.search__wrapper} ${styles[theme]}`}>
+    <div className={`${styles.wrapper} ${styles[theme]}`}>
       <input
-        type='text'
+        type="text"
         className={styles.input}
         placeholder={props?.placeholder || 'Search'}
         value={value}
         onChange={onChange}
         onKeyDown={keyPress}
+        data-testid="query-input"
       />
-      <button className={styles.button} onClick={onClick}>
+      <button className={styles.button} onClick={onClick} data-testid="query-button">
         <div className={styles.loupe}></div>
       </button>
     </div>

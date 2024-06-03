@@ -1,4 +1,4 @@
-export interface Genre {
+export interface apiGenre {
   name: string;
   slug: string;
 }

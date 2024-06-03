@@ -6,10 +6,7 @@ import { BuildOptions } from './types/types';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 
-export function buildPlugins({
-  mode,
-  paths,
-}: BuildOptions): Configuration['plugins'] {
+export const buildPlugins = ({ mode, paths }: BuildOptions): Configuration['plugins'] => {
   const isDev = mode === 'development';
   const dotenvFilename = '.env';
 
@@ -31,4 +28,4 @@ export function buildPlugins({
   if (!isDev) {
   }
   return plugins;
-}
+};

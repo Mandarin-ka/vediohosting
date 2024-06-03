@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
 
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
-import ControlPanel from '@components/ControlPanel/ControlPanel';
-import Footer from '@components/Footer/Footer';
-import Header from '@components/Header/Header';
-import MovieCards from '@components/MovieCards/MovieCards';
-import Button from '@ui/Buttons/PaginationButton/PaginationButton';
+import ControlPanel from '@/components/ControlPanel/ControlPanel';
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
+import MovieCards from '@/components/MovieCards/MovieCards';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import Button from '@/components/PaginationButton/PaginationButton';
 
 import './MainPage.scss';
 
@@ -28,20 +28,9 @@ function MainPage() {
   }, []);
 
   return (
-    <div className={`App ${theme} ${isBurgerActive && 'bodyblock'}`}>
-      <Header
-        setQuery={setQuery}
-        query={query}
-        isBurger={isBurgerActive}
-        toggleBurger={onBurgerClick}
-      />
-      <ControlPanel
-        genre={genre}
-        setGenre={setGenre}
-        setQuery={setQuery}
-        isActive={isBurgerActive}
-        resetActive={onBurgerClick}
-      />
+    <div className={`page ${theme}`} data-testid="app">
+      <Header setQuery={setQuery} query={query} isBurger={isBurgerActive} toggleBurger={onBurgerClick} />
+      <ControlPanel genre={genre} setGenre={setGenre} setQuery={setQuery} isActive={isBurgerActive} resetActive={onBurgerClick} />
 
       <MovieCards
         query={query}
@@ -51,7 +40,7 @@ function MainPage() {
         setIsLoadingNewPage={setIsLoadingNewPage}
         setPage={setPage}
       />
-      <Button text='Load More' onClick={loadNewPage} />
+      <Button text="Load More" onClick={loadNewPage} />
       <Footer />
     </div>
   );

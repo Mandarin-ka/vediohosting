@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 
 import { ClickEventType } from '@/types/clickEventType';
 
-import * as styles from './Modal.module.scss';
+import styles from './Modal.module.scss';
 
 const modalRoot = document.getElementById('modal');
 
@@ -20,12 +20,17 @@ function Modal({
     setIsActive((prevValue: boolean) => !prevValue);
   };
 
+  const onModalClick = (e: ClickEventType): void => {
+    e.stopPropagation();
+  };
+
   let element: JSX.Element;
+  const className = isActive && 'active';
 
   if (isActive) {
     element = (
-      <div className={styles.blackout} onClick={close}>
-        <div className={styles.modal}>
+      <div className={styles.blackout} onClick={close} data-testid="blackout">
+        <div className={`${styles.modal} ${styles[className]}`} data-testid="modal" onClick={onModalClick}>
           <button className={styles.close} onClick={close}>
             <div className={styles.line} />
           </button>

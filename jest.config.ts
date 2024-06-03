@@ -1,17 +1,20 @@
 import type { Config } from 'jest';
-import { defaults } from 'jest-config';
 
 const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   transform: {
     'node_modules/variables/.+\\.(j|t)sx?$': 'ts-jest',
+    '\\.(css|less|scss|sss|style)$': 'ts-jest',
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
-  transformIgnorePatterns: ['node_modules/(?!variables/.*)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!variables/.*)',
+    '/node_modules/(?!(axios)/)',
+  ],
   moduleNameMapper: {
-    '\\.(css|less|scss|sss|style)$':
-      '<rootDir>/node_modules/identity-obj-proxy',
+    '\\.(css|scss)$': 'identity-obj-proxy',
+    '@/(.*)': '<rootDir>/src/$1',
   },
 };
 

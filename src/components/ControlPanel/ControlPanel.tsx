@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { getKinopoiskGenres } from '@/API/kinopoisk/getKinopoiskGenres';
-import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
-import { useAppSelector } from '@/hooks/redux/useAppSelector';
+import { configValue } from './config';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { movieSlice } from '@/store/reducers/MovieReducer';
-import { AxiosResponseGenre } from '@/types/axiosResponse';
-import { Genre } from '@/types/genres';
-import GenreButton from '@/ui/Buttons/GenreButton/GenreButton';
+import GenreButton from './GenreButton/GenreButton';
 
-import * as styles from './ControlPanel.module.scss';
+import styles from './ControlPanel.module.scss';
+import { Genre } from '@/store/reducers/GenresReducer';
+import { createGenresAction } from '@/store/actions/createGenresAction';
 
 function ControlPanel({
   isActive,
@@ -23,45 +23,34 @@ function ControlPanel({
   setQuery: (el: string) => void;
   resetActive: () => void;
 }) {
-  const [genres, setGenres] = useState<Genre[]>([]);
   const { movieFetchingSuccess } = movieSlice.actions;
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.ThemeReducer);
+  const { genres, error } = useAppSelector((state) => state.GenresReducer);
 
   useEffect(() => {
-    getKinopoiskGenres().then((response: AxiosResponseGenre) => {
-      setGenres(response.data);
-    });
+    dispatch(createGenresAction());
   }, []);
 
   const toggleGenre = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    const value = (e.target as HTMLElement).textContent;
-    setGenre(value.toLowerCase() === 'все' ? '' : value);
+    const value = configValue(e);
+    setGenre(value);
     dispatch(movieFetchingSuccess([]));
     setQuery('');
     resetActive();
   };
 
+  if (error) return <h2>{error}. Попробуйте позже</h2>;
+
   return (
-    <div
-      className={`${styles.panel} ${isActive && styles.active} ${
-        styles[theme]
-      }`}
-    >
-      <GenreButton
-        text={'Все'}
-        onClick={toggleGenre}
-        className={genre === '' ? 'active' : ''}
-      />
-      {genres.map((e: Genre, i: number) => (
-        <GenreButton
-          key={e.name + i}
-          text={e.name}
-          onClick={toggleGenre}
-          className={genre === e.name ? 'active' : ''}
-        />
-      ))}
+    <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`} data-testid="controls">
+      {genres.length <= 1
+        ? Array(32)
+            .fill(null)
+            .map((_, i) => <GenreButton key={i} className="stub" />)
+        : genres.map((e: Genre, i: number) => (
+            <GenreButton key={i} text={e.label} value={e.value} onClick={toggleGenre} className={genre === e.value ? 'active' : ''} />
+          ))}
     </div>
   );
 }
