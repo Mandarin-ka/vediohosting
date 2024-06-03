@@ -29,9 +29,9 @@ function Footer() {
         </div>
 
         <div className={styles.links}>
-          {socialLinks.map((e) => {
+          {socialLinks.map((e, i) => {
             return (
-              <a href={e.ref} className={styles.link}>
+              <a key={i} href={e.ref} className={styles.link}>
                 {e.icon}
               </a>
             );

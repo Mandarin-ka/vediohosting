@@ -1,11 +1,3 @@
-export interface ResponseKiniopoisk {
-  docs: Movie[];
-  total: number;
-  limit: number;
-  page: number;
-  pages: number;
-}
-
 export interface Movie {
   id: number;
   names?: Name[];
