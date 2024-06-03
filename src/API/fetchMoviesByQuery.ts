@@ -1,6 +1,6 @@
 import { baseUrl, cacheTime, headers } from '@/constants/apiConfig';
 import { ResponseKiniopoisk } from '@/types/movies';
-import axiosInstance from '@/utils/axios/axiosWithCache';
+import axiosInstance from '@/utils/axiosWithCache';
 
 export const fetchMoviesByQuery = async (query: string, page?: number, genre?: string) => {
   try {
@@ -19,7 +19,6 @@ export const fetchMoviesByQuery = async (query: string, page?: number, genre?: s
         limit: 16,
         id: ids,
         genre: genre || null,
-        'persons.profession': 'режиссер',
       },
       paramsSerializer: { indexes: null },
       cache: { ttl: cacheTime },

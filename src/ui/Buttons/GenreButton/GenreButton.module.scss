@@ -7,6 +7,10 @@
   cursor: pointer;
   transition: 0.1s;
 
+  &.stub {
+    padding: 14px 60px;
+  }
+
   &:hover,
   &.active {
     background-color: $black;

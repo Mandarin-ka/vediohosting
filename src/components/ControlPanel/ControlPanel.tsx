@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import { configValue } from './config';
-import { fetchGenres } from '@/API/fetchGenres';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { movieSlice } from '@/store/reducers/MovieReducer';
-import { AxiosResponseGenre } from '@/types/axiosResponse';
-import { Genre } from '@/types/genres';
 import GenreButton from '@/ui/Buttons/GenreButton/GenreButton';
 
 import styles from './ControlPanel.module.scss';
+import { Genre } from '@/store/reducers/GenresReducer';
+import { createGenresAction } from '@/store/actions/createGenresAction';
 
 function ControlPanel({
   isActive,
@@ -24,15 +23,13 @@ function ControlPanel({
   setQuery: (el: string) => void;
   resetActive: () => void;
 }) {
-  const [genres, setGenres] = useState<Genre[]>([]);
   const { movieFetchingSuccess } = movieSlice.actions;
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.ThemeReducer);
+  const { isLoading, genres, error } = useAppSelector((state) => state.GenresReducer);
 
   useEffect(() => {
-    fetchGenres().then((response: AxiosResponseGenre) => {
-      setGenres(response.data);
-    });
+    dispatch(createGenresAction());
   }, []);
 
   const toggleGenre = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -43,12 +40,19 @@ function ControlPanel({
     resetActive();
   };
 
+  if (error) return <h2>{error}. Попробуйте позже</h2>;
+
   return (
     <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`}>
-      <GenreButton text={'Все'} onClick={toggleGenre} className={genre === '' ? 'active' : ''} />
-      {genres.map((e: Genre, i: number) => (
-        <GenreButton key={e.name + i} text={e.name} onClick={toggleGenre} className={genre === e.name ? 'active' : ''} />
-      ))}
+      {genres.length === 1 &&
+        Array(32)
+          .fill(null)
+          .map((_, i) => <GenreButton key={i} text={''} value={''} className='stub' />)}
+
+      {genres.length > 1 &&
+        genres.map((e: Genre, i: number) => (
+          <GenreButton key={i} text={e.label} value={e.value} onClick={toggleGenre} className={genre === e.value ? 'active' : ''} />
+        ))}
     </div>
   );
 }

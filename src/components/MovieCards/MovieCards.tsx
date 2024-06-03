@@ -4,8 +4,8 @@ import { CardsProps } from './config';
 import MovieCard from './MovieCard/MovieCard';
 import { useAppDispatch } from '@/hooks/redux/useAppDispatch';
 import { useAppSelector } from '@/hooks/redux/useAppSelector';
-import { createGenreAction } from '@/store/actions/createGenreAction';
-import { createQueryAction } from '@/store/actions/createQueryAction';
+import { createGenreRequestAction } from '@/store/actions/createGenreRequestAction';
+import { createQueryRequestAction } from '@/store/actions/createQueryRequestAction';
 import { Movie } from '@/types/movies';
 
 import styles from './MovieCards.module.scss';
@@ -15,7 +15,9 @@ function MovieCards({ query, genre, page, setPage, isLoadingNewPage, setIsLoadin
   const { isLoading, movies, error } = useAppSelector((state) => state.MoviesReducer);
 
   useEffect(() => {
-    query ? dispatch(createQueryAction(query, page, isLoadingNewPage, genre)) : dispatch(createGenreAction(page, genre, isLoadingNewPage));
+    query
+      ? dispatch(createQueryRequestAction(query, page, isLoadingNewPage, genre))
+      : dispatch(createGenreRequestAction(page, genre, isLoadingNewPage));
     isLoadingNewPage ? setIsLoadingNewPage(false) : setPage(1);
   }, [page, genre, query]);
 

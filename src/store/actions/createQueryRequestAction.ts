@@ -2,7 +2,7 @@ import { movieSlice } from '../reducers/MovieReducer';
 import { fetchMoviesByQuery } from '@/API/fetchMoviesByQuery';
 import { AppDispatch } from '@/store/store';
 
-export function createQueryAction(query: string, page?: number, isNewPage?: boolean, genre?: string) {
+export const createQueryRequestAction = (query: string, page?: number, isNewPage?: boolean, genre?: string) => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(movieSlice.actions.movieFetching());
@@ -16,4 +16,4 @@ export function createQueryAction(query: string, page?: number, isNewPage?: bool
       dispatch(movieSlice.actions.movieFetchingError(e.message));
     }
   };
-}
+};

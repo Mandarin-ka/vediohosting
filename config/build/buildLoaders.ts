@@ -2,7 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { ModuleOptions } from 'webpack';
 import { BuildOptions } from './types/types';
 
-export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
+export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
   const isDev = options.mode === 'development';
 
   const cssLoadersWithModules = {
@@ -12,9 +12,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
       modules: {
         namedExport: false,
         auto: true,
-        localIdentName: isDev
-          ? '[path][name]_[hash:base64:8]'
-          : '[hash:base64:8]',
+        localIdentName: isDev ? '[path][name]_[hash:base64:8]' : '[hash:base64:8]',
       },
     },
   };
@@ -50,14 +48,10 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     use: {
       loader: 'babel-loader',
       options: {
-        presets: [
-          '@babel/preset-env',
-          '@babel/preset-typescript',
-          ['@babel/preset-react', { runtime: 'automatic' }],
-        ],
+        presets: ['@babel/preset-env', '@babel/preset-typescript', ['@babel/preset-react', { runtime: 'automatic' }]],
       },
     },
   };
 
   return [assetLoader, svgrLoader, cssLoader, babelLoader];
-}
+};

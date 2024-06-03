@@ -1,6 +1,6 @@
 import { baseUrl, cacheTime, headers, selectFields } from '@/constants/apiConfig';
 import { ResponseKiniopoisk } from '@/types/movies';
-import axiosInstance from '@/utils/axios/axiosWithCache';
+import axiosInstance from '@/utils/axiosWithCache';
 
 export const fetchMoviesByGenre = async (page?: number, genre?: string): Promise<ResponseKiniopoisk> => {
   const params = {

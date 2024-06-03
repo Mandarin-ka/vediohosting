@@ -2,7 +2,7 @@ import { movieSlice } from '../reducers/MovieReducer';
 import { fetchMoviesByGenre } from '@/API/fetchMoviesByGenre';
 import { AppDispatch } from '@/store/store';
 
-export function createGenreAction(page?: number, genre?: string, isNewPage?: boolean) {
+export function createGenreRequestAction(page?: number, genre?: string, isNewPage?: boolean) {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(movieSlice.actions.movieFetching());

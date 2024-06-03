@@ -1,17 +1,16 @@
 import { cacheTime, headers } from '@/constants/apiConfig';
-import { AxiosResponseGenre } from '@/types/axiosResponse';
-import axiosInstance from '@/utils/axios/axiosWithCache';
+import axiosInstance from '@/utils/axiosWithCache';
 
-export const fetchGenres = async (): Promise<AxiosResponseGenre> => {
+export const fetchGenres = async () => {
   try {
-    const dataWithCache: AxiosResponseGenre = await axiosInstance.get('https://api.kinopoisk.dev/v1/movie/possible-values-by-field', {
+    const response = await axiosInstance.get('https://api.kinopoisk.dev/v1/movie/possible-values-by-field', {
       headers,
       params: { field: 'genres.name' },
       cache: { ttl: cacheTime },
     });
 
-    return dataWithCache;
+    return response.data;
   } catch (e: unknown) {
-    console.error((e as Error).message);
+    return e;
   }
 };

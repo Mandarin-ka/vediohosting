@@ -6,7 +6,7 @@ import { useAppSelector } from '@/hooks/redux/useAppSelector';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
 import Skeleton from '@/ui/Skeleton/Skeleton';
-import { getDirector } from '@/utils/cards/getDirector';
+import { getDirector } from '@/utils/getDirector';
 
 import styles from './MovieCard.module.scss';
 
