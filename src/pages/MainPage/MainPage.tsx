@@ -4,8 +4,8 @@ import ControlPanel from '@/components/ControlPanel/ControlPanel';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import MovieCards from '@/components/MovieCards/MovieCards';
-import { useAppSelector } from '@/hooks/useAppSelector';
 import Button from '@/components/PaginationButton/PaginationButton';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 import './MainPage.scss';
 
