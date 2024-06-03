@@ -15,6 +15,7 @@ npm install
 ### env
 
 | X_API_KEY | [kinopoisk](https://kinopoisk.dev/) api key |
+| --------- | ------------------------------------------- |
 
 ###devServer
 
