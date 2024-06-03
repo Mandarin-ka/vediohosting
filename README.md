@@ -33,3 +33,5 @@ npm run test
 ```sh
 npm run cy:open
 ```
+
+[Deploy](https://videohosting.vercel.app/)
