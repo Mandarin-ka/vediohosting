@@ -43,7 +43,7 @@ function ControlPanel({
   if (error) return <h2>{error}. Попробуйте позже</h2>;
 
   return (
-    <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`}>
+    <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`} data-testid="controls">
       {genres.length <= 1
         ? Array(32)
             .fill(null)

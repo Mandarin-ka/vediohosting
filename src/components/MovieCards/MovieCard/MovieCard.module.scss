@@ -2,6 +2,14 @@
   width: 300px;
   box-sizing: border-box;
   position: relative;
+
+  &.dark {
+    color: $dark-text-color;
+
+    .year::before {
+      background-color: $dark-text-color;
+    }
+  }
 }
 
 .poster {
@@ -62,12 +70,4 @@
     top: calc(50% - 2.5px);
     left: calc((-5px - 30px) / 2);
   }
-
-  &.dark::before {
-    background-color: $dark-text-color;
-  }
-}
-
-.dark {
-  color: $dark-text-color;
 }

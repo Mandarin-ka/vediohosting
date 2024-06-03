@@ -28,7 +28,7 @@ function MainPage() {
   }, []);
 
   return (
-    <div className={`page ${theme}`}>
+    <div className={`page ${theme}`} data-testid="app">
       <Header setQuery={setQuery} query={query} isBurger={isBurgerActive} toggleBurger={onBurgerClick} />
       <ControlPanel genre={genre} setGenre={setGenre} setQuery={setQuery} isActive={isBurgerActive} resetActive={onBurgerClick} />
 

@@ -19,7 +19,7 @@ function Header({
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-testid="header">
       <div className={styles.wrapper}>
         <div className={`${styles.logo} ${styles[theme]}`} data-testid="logo">
           <div className={styles.triangle} />

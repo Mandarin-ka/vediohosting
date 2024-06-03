@@ -8,7 +8,7 @@ function PaginationButton({ text, onClick }: { text?: string; onClick?: () => vo
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   return (
-    <button className={`${styles.button} ${styles[theme]}`} onClick={onClick}>
+    <button className={`${styles.button} ${styles[theme]}`} onClick={onClick} data-testid="pagination">
       {text}
     </button>
   );

@@ -28,15 +28,17 @@ function MovieCard({ movie }: { movie?: Movie }) {
         </Modal>
       )}
 
-      <div className={styles.card} onClick={openModal} data-testid="card">
+      <div className={`${styles.card} ${styles[theme]}`} onClick={openModal} data-testid="card">
         <img src={movie.poster?.previewUrl || 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'} alt="" className={styles.poster} />
         <div className={styles.wrapper}>
           <img src={getDirector(movie)?.photo} alt="" className={styles.thumbnail} />
           <div className={styles.info}>
-            <h2 className={`${styles.title} ${styles[theme]}`}>{movie.name || ' '}</h2>
+            <h2 className={styles.title} data-testid="title">
+              {movie.name || ' '}
+            </h2>
             <div className={styles.bottom}>
-              <h3 className={`${styles.director} ${styles[theme]}`}>{getDirector(movie)?.name || 'Неизвестен'}</h3>
-              <span className={`${styles.year} ${styles[theme]}`}>{movie.year}</span>
+              <h3 className={styles.director}>{getDirector(movie)?.name || 'Неизвестен'}</h3>
+              <span className={styles.year}>{movie.year}</span>
             </div>
           </div>
         </div>

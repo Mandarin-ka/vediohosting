@@ -31,8 +31,9 @@ function SearchBar(props: { placeholder?: string; query: string; setQuery: (q: s
         value={value}
         onChange={onChange}
         onKeyDown={keyPress}
+        data-testid="query-input"
       />
-      <button className={styles.button} onClick={onClick}>
+      <button className={styles.button} onClick={onClick} data-testid="query-button">
         <div className={styles.loupe}></div>
       </button>
     </div>

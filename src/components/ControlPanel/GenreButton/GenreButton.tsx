@@ -17,7 +17,7 @@ function GenreButton({
   const { theme } = useAppSelector((state) => state.ThemeReducer);
 
   return (
-    <button className={`${styles.button} ${styles[className]} ${styles[theme]}`} onClick={onClick}>
+    <button className={`${styles.button} ${styles[className]} ${styles[theme]}`} onClick={onClick} data-testid="control-button">
       {text}
     </button>
   );
