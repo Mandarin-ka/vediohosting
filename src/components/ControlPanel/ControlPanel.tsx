@@ -1,7 +1,8 @@
+/* eslint-disable indent */
 import { useEffect } from 'react';
 
+import GenreButton from '../styled/Buttons/GenreButton/GenreButton';
 import { configValue } from './config';
-import GenreButton from './GenreButton/GenreButton';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { createGenresAction } from '@/store/actions/createGenresAction';
@@ -43,14 +44,24 @@ function ControlPanel({
   if (error) return <h2>{error}. Попробуйте позже</h2>;
 
   return (
-    <div className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`} data-testid="controls">
+    <div
+      className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`}
+      data-testid="controls"
+    >
       {genres.length <= 1
         ? Array(32)
-          .fill(null)
-          .map((_, i) => <GenreButton key={i} className="stub" />)
+            .fill(null)
+            .map((_, i) => <GenreButton key={i} className="stub" />)
         : genres.map((e: Genre, i: number) => (
-          <GenreButton key={i} text={e.label} value={e.value} onClick={toggleGenre} className={genre === e.value ? 'active' : ''} />
-        ))}
+            <GenreButton
+              key={i}
+              value={e.value}
+              onClick={toggleGenre}
+              className={genre === e.value && 'active'}
+            >
+              {e.label}
+            </GenreButton>
+          ))}
     </div>
   );
 }

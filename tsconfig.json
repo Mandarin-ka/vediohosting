@@ -5,7 +5,7 @@
     "outDir": "./bundle/",
     "types": ["@testing-library/jest-dom"],
     "resolveJsonModule": true,
-    "noImplicitAny": true, //change
+    "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",

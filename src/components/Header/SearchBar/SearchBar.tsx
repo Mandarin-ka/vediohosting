@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
+import useInput from '@/hooks/useInput';
 
 import styles from './SearchBar.module.scss';
-import useInput from '@/hooks/useInput';
 
 function SearchBar(props: { placeholder?: string; query: string; setQuery: (q: string) => void }) {
   const { value, onChange } = useInput('');

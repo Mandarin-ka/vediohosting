@@ -4,7 +4,7 @@ import ControlPanel from '@/components/ControlPanel/ControlPanel';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import MovieCards from '@/components/MovieCards/MovieCards';
-import Button from '@/components/PaginationButton/PaginationButton';
+import Button from '@/components/styled/Buttons/PaginationButton/PaginationButton';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
 import './MainPage.scss';
@@ -40,7 +40,7 @@ function MainPage() {
         setIsLoadingNewPage={setIsLoadingNewPage}
         setPage={setPage}
       />
-      <Button text="Load More" onClick={loadNewPage} />
+      <Button onClick={loadNewPage}>Load More</Button>
       <Footer />
     </div>
   );
