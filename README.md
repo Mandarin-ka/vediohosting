@@ -68,5 +68,5 @@ npm run cy:open
 4. Redux-toolkit
 5. jest
 6. cypress
-7. SASS (каюсь, я заметил слишком поздно, а из-за острой нехватки времени не успел переписать на styled-components до дедлайна)
-8. npm (yarn у меня не хочет работать..)
+7. SASS
+8. npm

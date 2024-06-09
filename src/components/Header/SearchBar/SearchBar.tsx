@@ -1,16 +1,11 @@
-import { useState } from 'react';
-
 import { useAppSelector } from '@/hooks/useAppSelector';
+import useInput from '@/hooks/useInput';
 
 import styles from './SearchBar.module.scss';
 
 function SearchBar(props: { placeholder?: string; query: string; setQuery: (q: string) => void }) {
-  const [value, setValue] = useState(props.query);
+  const { value, onChange } = useInput('');
   const { theme } = useAppSelector((state) => state.ThemeReducer);
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value);
-  };
 
   const onClick = () => {
     props.setQuery(value);

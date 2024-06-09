@@ -1,26 +1,22 @@
-import { useAppSelector } from '@/hooks/useAppSelector';
-
-import styles from './Skeleton.module.scss';
+import Card from '@/components/styled/Card/Card';
+import Flex from '@/components/styled/Flex/Flex';
+import Stub from '@/components/styled/Stub/Stub';
 
 function Skeleton() {
-  const { theme } = useAppSelector((state) => state.ThemeReducer);
-
   return (
-    <div data-testid="skeleton">
-      <div className={`${styles.card} ${styles[theme]}`}>
-        <div className={`${styles.poster} ${styles[theme]}`} />
-        <div className={styles.wrapper}>
-          <div className={`${styles.thumbnail} ${styles[theme]}`} />
-          <div className={styles.info}>
-            <div className={`${styles.title} ${styles[theme]}`} />
-            <div className={styles.bottom}>
-              <div className={`${styles.director}  ${styles[theme]}`} />
-              <div className={`${styles.year} ${styles[theme]}`} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Card data-testid="skeleton">
+      <Stub w={300} h={450} radius={0} />
+      <Flex>
+        <Stub w={36} h={50} radius={5.5} />
+        <Flex fld="column" m={[12, 0, 0, 0]}>
+          <Stub w={300} h={12} radius={10} />
+          <Flex m={[10, 0, 0, 0]} jc="space-between">
+            <Stub w={150} h={12} radius={10} />
+            <Stub className="year" w={90} h={12} radius={10} />
+          </Flex>
+        </Flex>
+      </Flex>
+    </Card>
   );
 }
 

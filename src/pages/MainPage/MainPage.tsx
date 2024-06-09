@@ -3,8 +3,9 @@ import { useCallback, useState } from 'react';
 import ControlPanel from '@/components/ControlPanel/ControlPanel';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import Skeleton from '@/components/MovieCards/MovieCard/Skeleton/Skeleton';
 import MovieCards from '@/components/MovieCards/MovieCards';
-import Button from '@/components/PaginationButton/PaginationButton';
+import Button from '@/components/styled/Buttons/PaginationButton/PaginationButton';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
 import './MainPage.scss';
@@ -29,7 +30,7 @@ function MainPage() {
 
   return (
     <div className={`page ${theme}`} data-testid="app">
-      <Header setQuery={setQuery} query={query} isBurger={isBurgerActive} toggleBurger={onBurgerClick} />
+      {/* <Header setQuery={setQuery} query={query} isBurger={isBurgerActive} toggleBurger={onBurgerClick} />
       <ControlPanel genre={genre} setGenre={setGenre} setQuery={setQuery} isActive={isBurgerActive} resetActive={onBurgerClick} />
 
       <MovieCards
@@ -40,8 +41,10 @@ function MainPage() {
         setIsLoadingNewPage={setIsLoadingNewPage}
         setPage={setPage}
       />
-      <Button text="Load More" onClick={loadNewPage} />
-      <Footer />
+      <Button onClick={loadNewPage}>Load More</Button>
+      <Footer /> */}
+      <Header setQuery={setQuery} query={query} isBurger={isBurgerActive} toggleBurger={onBurgerClick} />
+      <Skeleton />
     </div>
   );
 }
