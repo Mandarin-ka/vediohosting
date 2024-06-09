@@ -2,17 +2,17 @@ import { memo, useState } from 'react';
 
 import Modal from '@/components/Modal/Modal';
 import Skeleton from '@/components/MovieCards/MovieCard/Skeleton/Skeleton';
+import Card from '@/components/styled/Card/Card';
+import Flex from '@/components/styled/Flex/Flex';
+import Image from '@/components/styled/Image/Image';
+import Text from '@/components/styled/Text/Text';
+import Title from '@/components/styled/Title/Title';
 import Videoplayer from '@/components/Videoplayer/Videoplayer';
-import { useAppSelector } from '@/hooks/useAppSelector';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
 import { getDirector } from '@/utils/getDirector';
 
-import styles from './MovieCard.module.scss';
-
 function MovieCard({ movie }: { movie?: Movie }) {
-  const { theme } = useAppSelector((state) => state.ThemeReducer);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = (e: ClickEventType) => {
@@ -28,21 +28,19 @@ function MovieCard({ movie }: { movie?: Movie }) {
         </Modal>
       )}
 
-      <div className={`${styles.card} ${styles[theme]}`} onClick={openModal} data-testid="card">
-        <img src={movie.poster?.previewUrl || 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'} alt="" className={styles.poster} />
-        <div className={styles.wrapper}>
-          <img src={getDirector(movie)?.photo} alt="" className={styles.thumbnail} />
-          <div className={styles.info}>
-            <h2 className={styles.title} data-testid="title">
-              {movie.name || ' '}
-            </h2>
-            <div className={styles.bottom}>
-              <h3 className={styles.director}>{getDirector(movie)?.name || 'Неизвестен'}</h3>
-              <span className={styles.year}>{movie.year}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Card onClick={openModal} data-testid="card">
+        <Image src={movie.poster?.previewUrl || 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png'} alt="" height={450} />
+        <Flex m={[13, 0, 0, 0]} ai="flex-start">
+          <Image src={getDirector(movie)?.photo} alt="" width={36} radius={5.5} />
+          <Flex fld="column" m={[0, 0, 0, 12]}>
+            <Title>{movie.name || ' '}</Title>
+            <Flex ai="center" m={[5, 0, 0, 0]}>
+              <Text>{getDirector(movie)?.name || 'Неизвестен'}</Text>
+              <Text className="year">{movie.year}</Text>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Card>
     </>
   ) : (
     <Skeleton />

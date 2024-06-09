@@ -9,5 +9,4 @@ export const GlobalStyles = createGlobalStyle`
   font-weight: normal;
   font-size: 16px;
   text-decoration: none;
-  color: $black;
 }`;

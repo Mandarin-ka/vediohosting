@@ -22,7 +22,7 @@ export const getThemeConfig = (theme: 'light' | 'dark') => {
         },
         stub: {
           primal: 'rgba(0, 0, 0, 0.25)',
-          blick: 'rgba(255, 255, 255, 0.5)',
+          blick: 'rgba(255, 255, 255, 0.4)',
         },
       },
     };
@@ -51,7 +51,7 @@ export const getThemeConfig = (theme: 'light' | 'dark') => {
       },
       stub: {
         primal: 'rgba(255, 255, 255, 0.25)',
-        blick: 'rgba(255, 255, 255, 0.1)',
+        blick: 'rgba(255, 255, 255, 0.3)',
       },
     },
   };

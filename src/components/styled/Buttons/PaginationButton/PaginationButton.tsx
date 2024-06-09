@@ -19,14 +19,14 @@ const StyledPaginationButton = styled.button`
   position: relative;
   overflow: hidden;
 
-  &::after {
+  &:after {
     content: '';
     width: 25px;
     position: absolute;
     height: 120%;
     top: -10%;
     left: -35px;
-    background-color: ${({ theme }) => theme.colors.stub};
+    background-color: ${({ theme }) => theme.colors.stub.blick};
     transition: 0.5s;
     transform: rotate(15deg);
   }
