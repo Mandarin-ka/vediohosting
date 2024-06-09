@@ -3,9 +3,9 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "./bundle/",
-    "types": ["@testing-library/jest-dom"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "resolveJsonModule": true,
-    "noImplicitAny": true, //change
+    "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",
@@ -17,6 +17,8 @@
       "@/*": ["./*"]
     }
   },
+
+  "exclude": ["./cypress.config.ts", "node_modules", "cypress"],
 
   "ts-node": {
     "compilerOptions": {
