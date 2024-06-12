@@ -3,11 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -15,7 +11,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "simple-import-sort"],
   "rules": {
-    "indent": ["error", 2, { "flatTernaryExpressions": true }],
+    "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
@@ -25,9 +21,7 @@
         "groups": [
           ["^react", "^@?\\w", "(react-dom)(/.*)"],
           ["^firebase"],
-          [
-            "(@|@components@UI|@pages|@utils|@projectTypes|@hooks|@routes|@store|@context|)(/.*|$)"
-          ],
+          ["(@|@components@UI|@pages|@utils|@projectTypes|@hooks|@routes|@store|@context|)(/.*|$)"],
           ["(styled|styled-components)"],
           ["^.+\\.s?css$"]
         ]

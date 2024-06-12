@@ -2,12 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundaries';
 import { useAppSelector } from './hooks/useAppSelector';
-import MainPage from './pages/MainPage/MainPage';
+import MainPage from './pages/MainPage';
 import { getThemeConfig } from './styles/themes';
 
 import { ThemeProvider } from 'styled-components';
-
-import '@/styles/vars.scss';
 
 function App() {
   const { theme } = useAppSelector((state) => state.ThemeReducer);

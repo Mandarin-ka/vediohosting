@@ -1,6 +1,6 @@
 import { movieSlice } from '../reducers/MovieReducer';
 import { fetchMoviesByGenre } from '@/API/fetchMoviesByGenre';
-import { AppDispatch } from '@/store/store';
+import { AppDispatch } from '@/store';
 
 export const createGenreRequestAction = (page?: number, genre?: string, isNewPage?: boolean) => {
   return async (dispatch: AppDispatch) => {
