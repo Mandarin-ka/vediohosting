@@ -5,7 +5,7 @@ import ControlPanel from '@/components/ControlPanel';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import MovieCards from '@/components/MovieCards/MovieCards';
-import Button from '@/components/styled/Buttons/PaginationButton/PaginationButton';
+import Button from '@/components/styled/PaginationButton';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);

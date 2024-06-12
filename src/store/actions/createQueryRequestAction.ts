@@ -1,6 +1,6 @@
 import { movieSlice } from '../reducers/MovieReducer';
 import { fetchMoviesByQuery } from '@/API/fetchMoviesByQuery';
-import { AppDispatch } from '@/store/store';
+import { AppDispatch } from '@/store';
 
 export const createQueryRequestAction = (query: string, page?: number, isNewPage?: boolean, genre?: string) => {
   return async (dispatch: AppDispatch) => {

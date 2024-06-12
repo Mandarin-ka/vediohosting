@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import Flex from '../styled/Flex/Flex';
+import Flex from '../styled/Flex';
 import { configValue } from './config';
 import GenreButton from './GenreButton';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -41,7 +41,7 @@ function ControlPanel({
   if (error) return <h2>{error}. Попробуйте позже</h2>;
 
   return (
-    <Flex fld="row" fw="wrap" jc="flex-start" ai="flex-start" className={`panel ${isActive && 'active'}`}>
+    <Flex fld="row" fw="wrap" jc="flex-start" ai="flex-start" className={`panel ${isActive && 'active'}`} data-testid="controls">
       {genres.length <= 1
         ? Array(32)
             .fill(null)

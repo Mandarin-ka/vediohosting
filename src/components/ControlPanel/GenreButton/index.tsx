@@ -34,7 +34,7 @@ function GenreButton(props: {
   className?: string;
   children?: string;
 }) {
-  return <StyledGenreButton {...props} data-testid="control" />;
+  return <StyledGenreButton {...props} data-testid="control-button" />;
 }
 
 export default GenreButton;

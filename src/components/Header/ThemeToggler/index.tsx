@@ -19,7 +19,7 @@ function ThemeToggler({ isBurgerActive }: { isBurgerActive: boolean }) {
   };
 
   return (
-    <StyledWrapper className={`${theme} ${isBurgerActive && 'burger'}`} onClick={onClick}>
+    <StyledWrapper className={`${theme} ${isBurgerActive && 'burger'}`} onClick={onClick} data-testid="toggler">
       <StyledBar className={`${theme} ${isBurgerActive && 'burger'}`} />
       <StyledToggler className={`${theme} ${isBurgerActive && 'burger'}`} />
     </StyledWrapper>

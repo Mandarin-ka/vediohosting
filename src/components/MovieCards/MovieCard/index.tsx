@@ -3,10 +3,10 @@ import { memo, useState } from 'react';
 import Modal from '@/components/Modal';
 import Skeleton from '@/components/MovieCards/MovieCard/Skeleton';
 import Card from '@/components/MovieCards/MovieCard/styled';
-import Flex from '@/components/styled/Flex/Flex';
-import Image from '@/components/styled/Image/Image';
-import Text from '@/components/styled/Text/Text';
-import Title from '@/components/styled/Title/Title';
+import Flex from '@/components/styled/Flex';
+import Image from '@/components/styled/Image';
+import Text from '@/components/styled/Text';
+import Title from '@/components/styled/Title';
 import Videoplayer from '@/components/Videoplayer';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
@@ -33,7 +33,7 @@ function MovieCard({ movie }: { movie?: Movie }) {
         <Flex m={[13, 0, 0, 0]} ai="flex-start">
           <Image src={getDirector(movie)?.photo} alt="" width={36} radius={5.5} />
           <Flex fld="column" m={[0, 0, 0, 12]}>
-            <Title>{movie.name || ' '}</Title>
+            <Title data-testid="title">{movie.name || ' '}</Title>
             <Flex ai="center" m={[5, 0, 0, 0]}>
               <Text>{getDirector(movie)?.name || 'Неизвестен'}</Text>
               <Text className="year">{movie.year}</Text>

@@ -1,6 +1,6 @@
 import Card from '../styled';
 import Stub from '@/components/MovieCards/MovieCard/Skeleton/Stub/Stub';
-import Flex from '@/components/styled/Flex/Flex';
+import Flex from '@/components/styled/Flex';
 
 function Skeleton() {
   return (

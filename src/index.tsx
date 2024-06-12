@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
-import { setupStore } from './store/store';
+import { setupStore } from './store';
 import { GlobalStyles } from './styles/Global/GlobalStyles';
 import App from '@/App';
 

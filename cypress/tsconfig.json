@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "./bundle/",
-    "types": ["node", "jest", "@testing-library/jest-dom", "cypress"],
+    "types": ["cypress"],
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "module": "ESNext",

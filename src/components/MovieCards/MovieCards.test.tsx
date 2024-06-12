@@ -2,7 +2,7 @@ import { act } from 'react';
 
 import MovieCards from './MovieCards';
 import { fetchMoviesByGenre } from '@/API/fetchMoviesByGenre';
-import { renderWithStore } from '@/tests/helpers/ReduxHelper';
+import { renderWithSC } from '@/tests/helpers/SCHelper';
 import { cardsMock } from '@/tests/mocks/cards';
 import { Movie } from '@/types/movies';
 import { render, screen, waitFor } from '@testing-library/react';
@@ -24,7 +24,7 @@ describe('Render Cards', () => {
       (fetchMoviesByGenre as jest.Mock).mockResolvedValue({ docs: [] });
 
       render(
-        renderWithStore(
+        renderWithSC(
           <MovieCards query="" genre="" page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />,
         ),
       );
@@ -42,7 +42,7 @@ describe('Render Cards', () => {
       (fetchMoviesByGenre as jest.Mock).mockResolvedValue(response);
 
       render(
-        renderWithStore(
+        renderWithSC(
           <MovieCards query="" genre="" page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />,
         ),
       );

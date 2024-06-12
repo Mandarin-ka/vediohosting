@@ -26,9 +26,9 @@ const StyledFlex = styled.div<FlexContainer>`
     align-items: center;
     justify-content: space-evenly;
     margin: 0 auto;
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${(props) => props.theme.colors.background};
 
-    @media ${({ theme }) => theme.media.tablet} {
+    @media ${(props) => props.theme.media.tablet} {
       position: fixed;
       right: -100%;
       z-index: 1;
@@ -46,15 +46,15 @@ const StyledFlex = styled.div<FlexContainer>`
       right: 0;
     }
 
-    @media ${({ theme }) => theme.media.tablet} {
+    @media ${(props) => props.theme.media.tablet} {
       width: 60vw;
     }
 
-    @media ${({ theme }) => theme.media.smallTablet} {
+    @media ${(props) => props.theme.media.smallTablet} {
       width: 80vw;
     }
 
-    @media ${({ theme }) => theme.media.phone} {
+    @media ${(props) => props.theme.media.phone} {
       width: 100vw;
     }
   }

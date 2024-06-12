@@ -1,4 +1,4 @@
-import Title from '../styled/Title/Title';
+import Title from '../styled/Title';
 import { StyledIFrame } from './styles';
 
 function Videoplayer({ videoUrl }: { videoUrl: string }) {

@@ -2,7 +2,7 @@ import { StyledInput, StyledSearchButton, StyledWrapper } from './styled';
 import useInput from '@/hooks/useInput';
 
 function SearchBar(props: { placeholder?: string; query: string; setQuery: (q: string) => void }) {
-  const { value, onChange } = useInput('');
+  const { value, onChange } = useInput(props.query);
 
   const onClick = () => {
     props.setQuery(value);
@@ -16,8 +16,8 @@ function SearchBar(props: { placeholder?: string; query: string; setQuery: (q: s
 
   return (
     <StyledWrapper>
-      <StyledInput placeholder="Search" value={value} onChange={onChange} onKeyDown={onKeyDown} />
-      <StyledSearchButton onClick={onClick} />
+      <StyledInput placeholder="Search" value={value} onChange={onChange} onKeyDown={onKeyDown} data-testid="query-input" />
+      <StyledSearchButton onClick={onClick} data-testid="query-button" />
     </StyledWrapper>
   );
 }
