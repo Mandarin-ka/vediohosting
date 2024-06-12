@@ -1,5 +1,5 @@
 import { LogoName, LogoWrapper, Triangle } from './styled';
-import Flex from '@/components/styled/Flex';
+import Flex from '@/components/StyledComponents/Flex';
 
 function Logo() {
   return (

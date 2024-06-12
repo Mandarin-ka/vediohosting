@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import Flex from '../styled/Flex';
-import Title from '../styled/Title';
+import Flex from '../StyledComponents/Flex';
+import Title from '../StyledComponents/Title';
 import { CardsProps } from './config';
 import MovieCard from './MovieCard';
 import { useAppDispatch } from '@/hooks/useAppDispatch';

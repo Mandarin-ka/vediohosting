@@ -1,6 +1,6 @@
 import { act } from 'react';
 
-import MovieCards from './MovieCards';
+import MovieCards from '.';
 import { fetchMoviesByGenre } from '@/API/fetchMoviesByGenre';
 import { renderWithSC } from '@/tests/helpers/SCHelper';
 import { cardsMock } from '@/tests/mocks/cards';

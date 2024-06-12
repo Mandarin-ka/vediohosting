@@ -1,4 +1,4 @@
-import Flex from '../styled/Flex';
+import Flex from '../StyledComponents/Flex';
 import { StyledA, StyledDocs, StyledFooter, StyledLicense, StyledLinks, StyledRefs } from './styled';
 import { leftRefs, rightRefs } from '@/constants/footerLinks';
 import { socialLinks } from '@/constants/socialLinks/socialLinks';

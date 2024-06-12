@@ -4,8 +4,8 @@ import { StyledPage } from './styled';
 import ControlPanel from '@/components/ControlPanel';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import MovieCards from '@/components/MovieCards/MovieCards';
-import Button from '@/components/styled/PaginationButton';
+import MovieCards from '@/components/MovieCards';
+import Button from '@/components/StyledComponents/PaginationButton';
 
 function MainPage() {
   const [page, setPage] = useState<number>(1);

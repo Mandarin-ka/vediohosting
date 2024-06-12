@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import Flex from '../styled/Flex';
+import Flex from '../StyledComponents/Flex';
 import { configValue } from './config';
 import GenreButton from './GenreButton';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
