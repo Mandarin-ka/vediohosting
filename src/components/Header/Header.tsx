@@ -1,6 +1,7 @@
 import Burger from '../styled/Burger/Burger';
+import ThemeToggler from '../styled/ThemeToggler/ThemeToggler';
 import SearchBar from './SearchBar/SearchBar';
-import ThemeToggler from './ThemeToggler/ThemeToggler';
+// import ThemeToggler from './ThemeToggler/ThemeToggler';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
 import styles from './Header.module.scss';
@@ -31,7 +32,8 @@ function Header({
       <SearchBar setQuery={setQuery} query={query} />
 
       <Burger className={isBurger && 'active'} onClick={toggleBurger} />
-      <ThemeToggler isActive={isBurger} />
+      {/* <ThemeToggler isActive={isBurger} /> */}
+      <ThemeToggler isBurgerActive={isBurger} />
     </header>
   );
 }
