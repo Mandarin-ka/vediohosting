@@ -25,8 +25,8 @@ describe('Render Cards', () => {
 
       render(
         renderWithStore(
-          <MovieCards query='' genre='' page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />
-        )
+          <MovieCards query="" genre="" page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />,
+        ),
       );
     });
 
@@ -43,8 +43,8 @@ describe('Render Cards', () => {
 
       render(
         renderWithStore(
-          <MovieCards query='' genre='' page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />
-        )
+          <MovieCards query="" genre="" page={1} setPage={() => null} isLoadingNewPage={false} setIsLoadingNewPage={() => null} />,
+        ),
       );
     });
 
