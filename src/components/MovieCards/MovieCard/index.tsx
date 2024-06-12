@@ -1,13 +1,13 @@
 import { memo, useState } from 'react';
 
-import Modal from '@/components/Modal/Modal';
-import Skeleton from '@/components/MovieCards/MovieCard/Skeleton/Skeleton';
-import Card from '@/components/styled/Card/Card';
+import Modal from '@/components/Modal';
+import Skeleton from '@/components/MovieCards/MovieCard/Skeleton';
+import Card from '@/components/MovieCards/MovieCard/styled';
 import Flex from '@/components/styled/Flex/Flex';
 import Image from '@/components/styled/Image/Image';
 import Text from '@/components/styled/Text/Text';
 import Title from '@/components/styled/Title/Title';
-import Videoplayer from '@/components/Videoplayer/Videoplayer';
+import Videoplayer from '@/components/Videoplayer';
 import { ClickEventType } from '@/types/clickEventType';
 import { Movie } from '@/types/movies';
 import { getDirector } from '@/utils/getDirector';

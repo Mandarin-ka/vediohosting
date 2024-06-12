@@ -1,8 +1,7 @@
 import { createPortal } from 'react-dom';
 
+import { Blackout, StyledCloseButton, StyledCloseButtonLine, StyledModal } from './styled';
 import { ClickEventType } from '@/types/clickEventType';
-
-import styles from './Modal.module.scss';
 
 const modalRoot = document.getElementById('modal');
 
@@ -29,14 +28,14 @@ function Modal({
 
   if (isActive) {
     element = (
-      <div className={styles.blackout} onClick={close} data-testid="blackout">
-        <div className={`${styles.modal} ${styles[className]}`} data-testid="modal" onClick={onModalClick}>
-          <button className={styles.close} onClick={close}>
-            <div className={styles.line} />
-          </button>
+      <Blackout data-testid="blackout" onClick={close}>
+        <StyledModal className={className} data-testid="modal" onClick={onModalClick}>
+          <StyledCloseButton onClick={close}>
+            <StyledCloseButtonLine />
+          </StyledCloseButton>
           {children}
-        </div>
-      </div>
+        </StyledModal>
+      </Blackout>
     );
   } else {
     return null;

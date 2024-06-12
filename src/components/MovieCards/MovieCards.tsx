@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Flex from '../styled/Flex/Flex';
 import Title from '../styled/Title/Title';
 import { CardsProps } from './config';
-import MovieCard from './MovieCard/MovieCard';
+import MovieCard from './MovieCard';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { createGenreRequestAction } from '@/store/actions/createGenreRequestAction';

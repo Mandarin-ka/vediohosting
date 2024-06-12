@@ -1,4 +1,4 @@
-import MovieCard from './MovieCard';
+import MovieCard from '.';
 import { renderWithStore } from '@/tests/helpers/ReduxHelper';
 import { cardsMock } from '@/tests/mocks/cards';
 import { render, screen } from '@testing-library/react';

@@ -1,4 +1,6 @@
-.page {
+import styled from 'styled-components';
+
+export const StyledPage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -6,12 +8,5 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-
-  &.light {
-    background-color: $white;
-  }
-
-  &.dark {
-    background-color: $dark-theme;
-  }
-}
+  background-color: ${({ theme }) => theme.colors.background};
+`;

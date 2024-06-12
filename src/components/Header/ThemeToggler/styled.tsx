@@ -1,12 +1,6 @@
-import { memo } from 'react';
-
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { themeSlice } from '@/store/reducers/ThemeReducer';
-
 import styled from 'styled-components';
 
-const StyledWrapper = styled.button`
+export const StyledWrapper = styled.button`
   & {
     width: 55px;
     height: 30px;
@@ -47,7 +41,7 @@ const StyledWrapper = styled.button`
   }
 `;
 
-const StyledBar = styled.div`
+export const StyledBar = styled.div`
   & {
     height: 100%;
     position: absolute;
@@ -64,7 +58,7 @@ const StyledBar = styled.div`
   }
 `;
 
-const StyledToggler = styled.div`
+export const StyledToggler = styled.div`
   & {
     width: 30px;
     height: 30px;
@@ -84,28 +78,3 @@ const StyledToggler = styled.div`
     border: 0;
   }
 `;
-
-function ThemeToggler({ isBurgerActive }: { isBurgerActive: boolean }) {
-  const { theme } = useAppSelector((state) => state.ThemeReducer);
-  const { changeTheme } = themeSlice.actions;
-  const dispatch = useAppDispatch();
-
-  const onClick = () => {
-    if (theme === 'light') {
-      dispatch(changeTheme({ theme: 'dark' }));
-    } else {
-      dispatch(changeTheme({ theme: 'light' }));
-    }
-  };
-
-  console.log(theme);
-
-  return (
-    <StyledWrapper className={`${theme} ${isBurgerActive && 'burger'}`} onClick={onClick}>
-      <StyledBar className={`${theme} ${isBurgerActive && 'burger'}`} />
-      <StyledToggler className={`${theme} ${isBurgerActive && 'burger'}`} />
-    </StyledWrapper>
-  );
-}
-
-export default memo(ThemeToggler);

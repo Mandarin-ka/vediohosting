@@ -1,9 +1,8 @@
-/* eslint-disable indent */
 import { useEffect } from 'react';
 
-import GenreButton from '../styled/Buttons/GenreButton/GenreButton';
 import Flex from '../styled/Flex/Flex';
 import { configValue } from './config';
+import GenreButton from './GenreButton';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { createGenresAction } from '@/store/actions/createGenresAction';

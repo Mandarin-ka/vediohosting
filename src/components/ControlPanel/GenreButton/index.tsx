@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 import styled from 'styled-components';
 
 const StyledGenreButton = styled.button`
@@ -39,4 +37,4 @@ function GenreButton(props: {
   return <StyledGenreButton {...props} data-testid="control" />;
 }
 
-export default memo(GenreButton);
+export default GenreButton;

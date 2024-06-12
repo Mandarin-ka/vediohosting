@@ -11,6 +11,7 @@ export const getThemeConfig = (theme: 'light' | 'dark') => {
     theme === 'light'
       ? {
           colors: {
+            blackout: 'rgba(0, 0, 0, 0.9)',
             white: '#fff',
             black: '#000',
             primary: '#ff8a00',
@@ -37,6 +38,7 @@ export const getThemeConfig = (theme: 'light' | 'dark') => {
         }
       : {
           colors: {
+            blackout: 'rgba(0, 0, 0, 0.9)',
             white: '#fff',
             black: '#000',
             primary: '#ffa840',
