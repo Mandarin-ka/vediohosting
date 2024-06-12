@@ -1,18 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
 
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundaries';
-import MainPage from './pages/MainPage/MainPage';
+import { useAppSelector } from './hooks/useAppSelector';
+import MainPage from './pages/MainPage';
+import { getThemeConfig } from './styles/themes';
 
-import '@/styles/reset.scss';
-import '@/styles/vars.scss';
+import { ThemeProvider } from 'styled-components';
 
 function App() {
+  const { theme } = useAppSelector((state) => state.ThemeReducer);
+
   return (
-    <ErrorBoundary>
-      <Routes>
-        <Route path='/' element={<MainPage />} />
-      </Routes>
-    </ErrorBoundary>
+    <ThemeProvider theme={getThemeConfig(theme)}>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
 

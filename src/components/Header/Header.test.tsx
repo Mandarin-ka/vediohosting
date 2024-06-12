@@ -1,29 +1,23 @@
-import { renderHeaderWithParams } from '@/tests/componentsConfig/headerConfig';
-import { fireEvent, screen } from '@testing-library/react';
+import Header from '.';
+import { setupStore } from '@/store';
+import { renderWithSC } from '@/tests/helpers/SCHelper';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 describe('Render header', () => {
-  let query = '';
-  const setQuery = (e: string) => {
-    query = e;
-  };
-
   test('Change theme', async () => {
-    renderHeaderWithParams(query, setQuery);
-
+    const store = setupStore();
+    render(renderWithSC(<Header query="" setQuery={() => null} isBurger={false} toggleBurger={() => null} />, store));
     const toggler = screen.getByTestId('toggler');
-
-    expect(screen.getByText('ModsenFilms')).not.toHaveClass('dark');
-    expect(screen.getByTestId('logo')).not.toHaveClass('dark');
-
+    expect(store.getState().ThemeReducer.theme).toBe('light');
     await userEvent.click(toggler);
-
-    expect(screen.getByText('ModsenFilms')).toHaveClass('dark');
-    expect(screen.getByTestId('logo')).toHaveClass('dark');
+    expect(store.getState().ThemeReducer.theme).toBe('dark');
+    await userEvent.click(toggler);
+    expect(store.getState().ThemeReducer.theme).toBe('light');
   });
 
   test('Input value into search bar', () => {
-    renderHeaderWithParams(query, setQuery);
+    render(renderWithSC(<Header query="" setQuery={() => null} isBurger={false} toggleBurger={() => null} />));
 
     const input = screen.getByPlaceholderText('Search') as HTMLInputElement;
     expect(input.value).toBe('');
@@ -40,7 +34,7 @@ describe('Render header', () => {
   });
 
   test('Input value into search bar with non-null query', () => {
-    renderHeaderWithParams('some string', setQuery);
+    render(renderWithSC(<Header query={'random word'} setQuery={() => null} isBurger={false} toggleBurger={() => null} />));
 
     const input = screen.getByPlaceholderText('Search') as HTMLInputElement;
     expect(input.value).not.toBe('');
