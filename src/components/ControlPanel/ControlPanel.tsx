@@ -2,14 +2,13 @@
 import { useEffect } from 'react';
 
 import GenreButton from '../styled/Buttons/GenreButton/GenreButton';
+import Flex from '../styled/Flex/Flex';
 import { configValue } from './config';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { createGenresAction } from '@/store/actions/createGenresAction';
 import { Genre } from '@/store/reducers/GenresReducer';
 import { movieSlice } from '@/store/reducers/MovieReducer';
-
-import styles from './ControlPanel.module.scss';
 
 function ControlPanel({
   isActive,
@@ -26,7 +25,6 @@ function ControlPanel({
 }) {
   const { movieFetchingSuccess } = movieSlice.actions;
   const dispatch = useAppDispatch();
-  const { theme } = useAppSelector((state) => state.ThemeReducer);
   const { genres, error } = useAppSelector((state) => state.GenresReducer);
 
   useEffect(() => {
@@ -44,25 +42,17 @@ function ControlPanel({
   if (error) return <h2>{error}. Попробуйте позже</h2>;
 
   return (
-    <div
-      className={`${styles.panel} ${isActive && styles.active} ${styles[theme]}`}
-      data-testid="controls"
-    >
+    <Flex fld="row" fw="wrap" jc="flex-start" ai="flex-start" className={`panel ${isActive && 'active'}`}>
       {genres.length <= 1
         ? Array(32)
             .fill(null)
             .map((_, i) => <GenreButton key={i} className="stub" />)
         : genres.map((e: Genre, i: number) => (
-            <GenreButton
-              key={i}
-              value={e.value}
-              onClick={toggleGenre}
-              className={genre === e.value && 'active'}
-            >
+            <GenreButton key={i} value={e.value} onClick={toggleGenre} className={genre === e.value && 'active'}>
               {e.label}
             </GenreButton>
           ))}
-    </div>
+    </Flex>
   );
 }
 

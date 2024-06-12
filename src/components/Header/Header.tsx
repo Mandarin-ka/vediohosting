@@ -1,4 +1,4 @@
-import Burger from './Burger/Burger';
+import Burger from '../styled/Burger/Burger';
 import SearchBar from './SearchBar/SearchBar';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -24,10 +24,13 @@ function Header({
         <div className={`${styles.logo} ${styles[theme]}`} data-testid="logo">
           <div className={styles.triangle} />
         </div>
+
         <h1 className={`${styles.title} ${styles[theme]}`}>ModsenFilms</h1>
       </div>
+
       <SearchBar setQuery={setQuery} query={query} />
-      <Burger isActive={isBurger} onClick={toggleBurger} />
+
+      <Burger className={isBurger && 'active'} onClick={toggleBurger} />
       <ThemeToggler isActive={isBurger} />
     </header>
   );

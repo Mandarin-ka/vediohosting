@@ -5,22 +5,17 @@ import { getMargin } from '@/utils/getMargin';
 import styled, { keyframes } from 'styled-components';
 
 const blinkAnimation = keyframes`
-  @keyframes blink {
-    0% {
-      left: -130px;
-    }
-
-    20% {
-      left: -130px;
-    }
-
-    35% {
-      left: 500px;
-    }
-
-    100% {
-      left: 500px;
-    }
+  0% {
+    left: -130px;
+  }
+  20% {
+    left: -130px;
+  }
+  35% {
+    left: 500px;
+  }
+  100% {
+    left: 500px;
   }
 `;
 
@@ -32,31 +27,37 @@ interface Stub {
 }
 
 const StyledStub = styled.div<Stub>`
-  width: ${(props) => `${props.w + 'px'}` || '100%'};
-  height:  ${(props) => `${props.h + 'px'}` || '100%'};
-  border-radius: ${(props) => props.radius || '0'}px;
-  background-color: ${({ theme }) => theme.colors.stub.primal};
-  margin:${(props) => getMargin(props.m) || 0};
-  position: relative;
-  overflow: hidden
+  &{
+    width: ${(props) => `${props.w + 'px'}` || '100%'};
+    height:  ${(props) => `${props.h + 'px'}` || '100%'};
+    border-radius: ${(props) => props.radius || '0'}px;
+    background-color: ${({ theme }) => theme.colors.stub.primal};
+    margin:${(props) => getMargin(props.m) || 0};
+    position: relative;
+    overflow: hidden
+  }
 
-  &::before{
+  &:before{
     content: '';
     width: 30px;
-    height: 130%;
+    height: 150%;
     background-color: ${({ theme }) => theme.colors.stub.blick};
     position: absolute;
-    top: -100px;
+    top: -40px;
     left: -100px;
     transform: rotate(15deg);
     box-shadow: 0 0 20px ${({ theme }) => theme.colors.stub.blick};
     animation: ${blinkAnimation} 3s linear infinite;
-    }
+  }
+
 
   &.year{
     margin-left: 30px;
-    position: relative;
-    &:before {
+    overflow: visible;
+    &:before{
+      display: none
+    }
+    &:after {
       content: '';
       position: absolute;
       width: 5px;

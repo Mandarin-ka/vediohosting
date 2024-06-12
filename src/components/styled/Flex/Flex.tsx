@@ -18,10 +18,57 @@ const StyledFlex = styled.div<FlexContainer>`
   justify-content: ${(props) => props.jc || 'stretch'};
   align-items: ${(props) => props.ai || 'stretch'};
   flex-wrap: ${(props) => props.fw || 'no-wrap'};
-  margin: ${(props) => getMargin(props.m)};
+  margin: ${(props) => getMargin(props.m) || 'auto'};
+
+  &.panel {
+    width: 90%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    background-color: ${({ theme }) => theme.colors.background};
+
+    @media ${({ theme }) => theme.media.tablet} {
+      position: fixed;
+      right: -100%;
+      z-index: 1;
+      height: 100vh;
+      padding: 10vh 1vw;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: flex-start;
+      top: 0;
+      transition: 0.3s;
+      border-left: 2px solid $buttons-color;
+    }
+
+    &.active {
+      right: 0;
+    }
+
+    @media ${({ theme }) => theme.media.tablet} {
+      width: 60vw;
+    }
+
+    @media ${({ theme }) => theme.media.smallTablet} {
+      width: 80vw;
+    }
+
+    @media ${({ theme }) => theme.media.phone} {
+      width: 100vw;
+    }
+  }
 `;
 
-function Flex(props: { m?: number | number[]; fw?: string; jc?: string; ai?: string; fld?: string; children?: ReactNode | ReactNode[] }) {
+function Flex(props: {
+  className?: string;
+  m?: number | number[];
+  fw?: string;
+  jc?: string;
+  ai?: string;
+  fld?: string;
+  children?: ReactNode | ReactNode[];
+}) {
   return <StyledFlex {...props} />;
 }
 

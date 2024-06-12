@@ -25,23 +25,17 @@
     z-index: 2;
 
     &.active {
-      right: calc(50vw - 70px);
-    }
-  }
-
-  @media screen and (max-width: 680px) {
-    &.active {
       right: calc(60vw - 70px);
     }
   }
 
-  @media screen and (max-width: 460px) {
+  @media screen and (max-width: 600px) {
     &.active {
       right: calc(80vw - 70px);
     }
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 425px) {
     &.active {
       right: calc(100vw - 70px);
     }
